@@ -743,7 +743,7 @@ module.exports = isNil;
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports={"v":4,"t":[{"t":7,"e":"div","m":[{"n":"class","f":["ractive-datepicker ",{"t":2,"r":"class"}],"t":13},{"n":"style","f":[{"t":2,"r":"style"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"header-year show-in-compact","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," - ",{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":["header ",{"t":2,"rx":{"r":".","m":[{"r":[],"s":"\"weekday-format\""}]}}],"t":13},{"n":"class-range","f":[{"t":2,"r":"range"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["Start"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","start"],"s":"_0(_1)"}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","start"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["start"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"starttime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"starttime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit start time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","start"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}," ",{"t":7,"e":"br"}," ",{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["End"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","end"],"s":"_1&&_0(_1)||\"---\""}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","end"],"s":"_1&&_0(_1)"}}," ",{"t":2,"x":{"r":["end"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"endtime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"endtime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit end time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","end"],"s":"_1&&_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekdayShort","date"],"s":"_0(_1)"}},","]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekday","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","date"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["date"],"s":"_0 instanceof Date?_0.getDate():\"\""}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"time\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"time\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","date"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":7,"e":"div","m":[{"n":"class","f":"editor","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"years","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setYear"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["year","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"fixYear","t":70}],"f":[{"t":2,"r":"."}]}],"i":"i","r":"years"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"year\",\"\")||\"date\")"}}}]}]}],"n":50,"x":{"r":["editing"],"s":"_0.indexOf(\"year\")>-1"}},{"t":4,"n":50,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"nav","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"previous","t":13},{"n":"click","f":"decrementMonth","t":70}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"next","t":13},{"n":"click","f":"incrementMonth","t":70}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"monthyear","t":13}],"f":[{"t":2,"r":"currentMonth"}," ",{"t":7,"e":"span","m":[{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"year\")]"}},"t":70},{"f":{"n":"tooltip","a":["Jump to specific year"]},"t":71}],"f":[{"t":2,"r":"currentYear"}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"days","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"weekdays","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","f":[{"t":2,"r":"."}]}],"r":"daysOfWeek"}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"dates","t":13},{"n":"mouseleave","f":{"x":{"r":["@this"],"s":"[_0.set(\"ghostEnd\",null)]"}},"t":70}],"f":[{"t":4,"f":[{"t":19,"f":[{"t":4,"f":[{"t":19,"f":[{"t":7,"e":"div","m":[{"n":"class-start","f":[{"t":2,"x":{"r":["ghostEnd",".","mStart","end"],"s":"(_0||_3)&&_2.isSame(_1,\"day\")&&!_2.isSame(_3,\"day\")"}}],"t":13},{"n":"class-between","f":[{"t":2,"x":{"r":["end","mThis","start","ghostEnd"],"s":"_1.isBetween(_2,_0)||_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"class-end","f":[{"t":2,"x":{"r":["mEnd","mGhostEnd",".","mThis","start"],"s":"(_0.isSame(_2,\"day\")||_1.isSame(_2,\"day\"))&&!_3.isSame(_4,\"day\")"}}],"t":13},{"n":"class-ghost","f":[{"t":2,"x":{"r":["ghostEnd","mThis","start","end"],"s":"!_1.isBefore(_2)&&(_1.isBetween(_2,_0)||_1.isSame(_0,\"day\"))&&!_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-selected","f":[{"t":2,"x":{"r":["mThis","start","ghostEnd","end"],"s":"_0.isSame(_1,\"day\")&&!_2&&!_3"}}],"t":13},{"n":"hover","f":{"x":{"r":["@this","lastSet","mThis","start","."],"s":"[_0.set(\"ghostEnd\",_1==\"start\"&&_2.isAfter(_3)?_4:null)]"}},"t":70},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"n":54,"z":[{"n":"mThis","x":{"x":{"r":["moment","."],"s":"_0(_1)"}}}]}],"r":"dates"}],"n":54,"z":[{"n":"mStart","x":{"x":{"r":["moment","start"],"s":"_0(_1)"}}},{"n":"mEnd","x":{"x":{"r":["moment","end"],"s":"_0(_1)"}}},{"n":"mGhostEnd","x":{"x":{"r":["moment","ghostEnd"],"s":"_0(_1)"}}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class-selected","f":[{"t":2,"x":{"r":["date","."],"s":"_0 instanceof Date&&_0.getFullYear()==_1.getFullYear()&&_0.getMonth()==_1.getMonth()&&_0.getDate()==_1.getDate()"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"r":"dates"}],"l":1}]}]}],"x":{"r":["editing"],"s":"_0==\"date\""},"l":1},{"t":4,"n":50,"f":[" ",{"t":7,"e":"div","m":[{"n":"class","f":"clock","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"hours","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setHours"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"t":4,"f":[{"n":"class","f":"active","t":13}],"n":50,"x":{"r":["hour","editing","."],"s":"_0(_1)==_2"}},{"n":"click","f":"setHours","t":70}],"f":[{"t":2,"r":"."}]}],"r":"hours"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"minutes","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setMinutes"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"t":4,"f":[{"n":"class","f":"active","t":13}],"n":50,"x":{"r":["minute","editing","."],"s":"_0(_1)==_2"}},{"n":"click","f":"setMinutes","t":70}],"f":[{"t":2,"r":"."}]}],"r":"minutes"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}]}],"x":{"r":["editing"],"s":"_0.indexOf(\"time\")>-1"},"l":1}]}]}],"e":{}};
+module.exports={"v":4,"t":[{"t":7,"e":"div","m":[{"n":"class","f":["ractive-datepicker ",{"t":2,"r":"class"}],"t":13},{"n":"style","f":[{"t":2,"r":"style"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"header-year show-in-compact","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," - ",{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":["header ",{"t":2,"rx":{"r":".","m":[{"r":[],"s":"\"weekday-format\""}]}}],"t":13},{"n":"class-range","f":[{"t":2,"r":"range"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["Start"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","start"],"s":"_0(_1)"}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","start"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["start"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"starttime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"starttime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit start time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","start"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}," ",{"t":7,"e":"br"}," ",{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["End"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","end"],"s":"_1&&_0(_1)||\"---\""}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","end"],"s":"_1&&_0(_1)"}}," ",{"t":2,"x":{"r":["end"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"endtime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"endtime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit end time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","end"],"s":"_1&&_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekdayShort","date"],"s":"_0(_1)"}},","]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekday","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","date"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["date"],"s":"_0 instanceof Date?_0.getDate():\"\""}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"time\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"time\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","date"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":7,"e":"div","m":[{"n":"class","f":"editor","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"years","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setYear"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["year","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"fixYear","t":70}],"f":[{"t":2,"r":"."}]}],"i":"i","r":"years"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"year\",\"\")||\"date\")"}}}]}]}],"n":50,"x":{"r":["editing"],"s":"_0.indexOf(\"year\")>-1"}},{"t":4,"n":50,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"nav","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"previous","t":13},{"n":"click","f":"decrementMonth","t":70}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"next","t":13},{"n":"click","f":"incrementMonth","t":70}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"monthyear","t":13}],"f":[{"t":2,"r":"currentMonth"}," ",{"t":7,"e":"span","m":[{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"year\")]"}},"t":70},{"f":{"n":"tooltip","a":["Jump to specific year"]},"t":71}],"f":[{"t":2,"r":"currentYear"}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"days","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"weekdays","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","f":[{"t":2,"r":"."}]}],"r":"daysOfWeek"}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"dates","t":13},{"n":"mouseleave","f":{"x":{"r":["@this"],"s":"[_0.set(\"ghostEnd\",null)]"}},"t":70}],"f":[{"t":4,"f":[{"t":19,"f":[{"t":4,"f":[{"t":19,"f":[{"t":7,"e":"div","m":[{"n":"class-start","f":[{"t":2,"x":{"r":["ghostEnd",".","mStart","end"],"s":"(_0||_3)&&_2.isSame(_1,\"day\")&&!_2.isSame(_3,\"day\")"}}],"t":13},{"n":"class-between","f":[{"t":2,"x":{"r":["end","mThis","start","ghostEnd"],"s":"_1.isBetween(_2,_0)||_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"class-end","f":[{"t":2,"x":{"r":["mEnd","mGhostEnd",".","mThis","start"],"s":"(_0.isSame(_2,\"day\")||_1.isSame(_2,\"day\"))&&!_3.isSame(_4,\"day\")"}}],"t":13},{"n":"class-ghost","f":[{"t":2,"x":{"r":["ghostEnd","mThis","start","end"],"s":"!_1.isBefore(_2)&&(_1.isBetween(_2,_0)||_1.isSame(_0,\"day\"))&&!_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-selected","f":[{"t":2,"x":{"r":["mThis","start","ghostEnd","end"],"s":"_0.isSame(_1,\"day\")&&!_2&&!_3"}}],"t":13},{"n":"hover","f":{"x":{"r":["@this","lastSet","mThis","start","."],"s":"[_0.set(\"ghostEnd\",_1==\"start\"&&_2.isAfter(_3)?_4:null)]"}},"t":70},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"n":54,"z":[{"n":"mThis","x":{"x":{"r":["moment","."],"s":"_0(_1)"}}}]}],"r":"dates"}],"n":54,"z":[{"n":"mStart","x":{"x":{"r":["moment","start"],"s":"_0(_1)"}}},{"n":"mEnd","x":{"x":{"r":["moment","end"],"s":"_0(_1)"}}},{"n":"mGhostEnd","x":{"x":{"r":["moment","ghostEnd"],"s":"_0(_1)"}}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class-selected","f":[{"t":2,"x":{"r":["date","."],"s":"_0 instanceof Date&&_0.getFullYear()==_1.getFullYear()&&_0.getMonth()==_1.getMonth()&&_0.getDate()==_1.getDate()"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"r":"dates"}],"l":1}]}]}],"x":{"r":["editing"],"s":"_0==\"date\""},"l":1},{"t":4,"n":50,"f":[" ",{"t":7,"e":"div","m":[{"n":"class","f":"clock","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"hours","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setHours"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["hour","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setHours","t":70}],"f":[{"t":2,"r":"."}]}],"r":"hours"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"minutes","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setMinutes"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["minute","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setMinutes","t":70}],"f":[{"t":2,"r":"."}]}],"r":"minutes"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}]}],"x":{"r":["editing"],"s":"_0.indexOf(\"time\")>-1"},"l":1}]}]}],"e":{}};
 
 /***/ }),
 /* 9 */
@@ -997,7 +997,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, ".ractive-datepicker {\n  display: inline-flex;\n  flex-direction: row;\n  background: #fff;\n}\n.ractive-datepicker,\n.ractive-datepicker *,\n.ractive-datepicker *:before,\n.ractive-datepicker *:after {\n  box-sizing: border-box;\n}\n.ractive-datepicker .header {\n  background: #333;\n  color: rgba(255,255,255,0.5);\n  padding: 2em;\n  min-width: 12em;\n  position: relative;\n  text-align: left;\n}\n.ractive-datepicker .header label {\n  font-size: 0.8em;\n  margin-bottom: 1em;\n  display: inline-block;\n  opacity: 0.5;\n}\n.ractive-datepicker .header > div {\n  cursor: pointer;\n}\n.ractive-datepicker .header.range .active:after {\n  content: none;\n}\n.ractive-datepicker .header .active {\n  color: #fff;\n  position: relative;\n}\n.ractive-datepicker .header .active:after {\n  content: '';\n  display: inline-block;\n  border: 10px solid transparent;\n  border-right-color: #fff;\n  position: absolute;\n  right: -2em;\n  top: 50%;\n  margin-top: -10px;\n}\n.ractive-datepicker .header .weekday {\n  font-size: 2em;\n}\n.ractive-datepicker .header .year {\n  display: block;\n}\n.ractive-datepicker .header .time {\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.ractive-datepicker .header .time span {\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.ractive-datepicker .header,\n.ractive-datepicker .dddd {\n  min-width: 15em;\n}\n.ractive-datepicker .editor {\n  white-space: nowrap;\n  flex: 1 1 66%;\n  padding: 2em;\n  position: relative;\n  user-select: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  position: absolute;\n  content: '';\n  top: 1em;\n  left: 0;\n  right: 0;\n  bottom: 1em;\n  pointer-events: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  background: linear-gradient(#fff, rgba(255,255,255,0), #fff);\n}\n.ractive-datepicker .editor .years:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: calc(50% - 3em);\n  right: calc(50% - 3em);\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .hours:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 3em;\n  right: 14em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .minutes:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 14em;\n  right: 3em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .years:after,\n.ractive-datepicker .editor .hours:after,\n.ractive-datepicker .editor .minutes:after {\n  border-bottom: 2px solid #aaa;\n  border-top: 2px solid #aaa;\n}\n.ractive-datepicker .monthyear {\n  white-space: initial;\n  font-weight: bold;\n  text-align: center;\n  margin-bottom: 1em;\n}\n.ractive-datepicker .monthyear span {\n  cursor: pointer;\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.ractive-datepicker .nav {\n  white-space: initial;\n  position: relative;\n}\n.ractive-datepicker .nav .next,\n.ractive-datepicker .nav .previous {\n  user-select: none;\n  position: absolute;\n  padding: 0.5em;\n  display: inline-block;\n  cursor: pointer;\n  top: -0.5em;\n}\n.ractive-datepicker .nav .previous {\n  left: 2.5em;\n}\n.ractive-datepicker .nav .previous:before {\n  content: '<';\n}\n.ractive-datepicker .nav .next {\n  right: 2.5em;\n}\n.ractive-datepicker .nav .next:before {\n  content: '>';\n}\n.ractive-datepicker .days {\n  white-space: initial;\n}\n.ractive-datepicker .weekdays {\n  display: flex;\n  opacity: 0.5;\n  font-weight: bold;\n}\n.ractive-datepicker .dates > div,\n.ractive-datepicker .weekdays > div {\n  display: inline-block;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  text-align: center;\n}\n.ractive-datepicker .dates {\n  max-width: 21em;\n  margin-bottom: -0.5em;\n}\n.ractive-datepicker .hours,\n.ractive-datepicker .minutes {\n  width: 50%;\n  height: 23em;\n  text-align: center;\n}\n.ractive-datepicker .years,\n.ractive-datepicker .clock {\n  width: 21em;\n  height: 23em;\n}\n.ractive-datepicker .dates {\n  user-select: none;\n}\n.ractive-datepicker .dates .selected,\n.ractive-datepicker .dates .start {\n  transition: border-radius 0.3s ease;\n}\n.ractive-datepicker .dates > div {\n  user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n}\n.ractive-datepicker .dates > div:not(.between):not(.start):not(.end):not(.selected) {\n  cursor: pointer;\n  border-radius: 50%;\n}\n.ractive-datepicker .dates > div:not(.between):not(.start):not(.end):not(.selected):hover {\n  background: #f0f0f0;\n}\n.ractive-datepicker .dates .off:not(.ghost) {\n  opacity: 0.25;\n}\n.ractive-datepicker .dates .between {\n  background: #d8eff1;\n}\n.ractive-datepicker .dates .between.ghost {\n  background: rgba(216,239,241,0.25);\n}\n.ractive-datepicker .dates > div.selected,\n.ractive-datepicker .dates > div.start,\n.ractive-datepicker .dates > div.end {\n  background: #0097a7;\n  color: #fff;\n  border-radius: 50%;\n}\n.ractive-datepicker .dates > div.selected.ghost,\n.ractive-datepicker .dates > div.start.ghost,\n.ractive-datepicker .dates > div.end.ghost {\n  background: rgba(0,151,167,0.25);\n  color: inherit;\n  cursor: pointer;\n}\n.ractive-datepicker .dates .start {\n  border-radius: 50% 0 0 50% !important;\n}\n.ractive-datepicker .dates .end {\n  border-radius: 0 50% 50% 0 !important;\n}\n.ractive-datepicker .years {\n  text-align: center;\n}\n.ractive-datepicker .years,\n.ractive-datepicker .hours,\n.ractive-datepicker .minutes {\n  z-index: 100;\n  white-space: initial;\n  overflow-y: scroll;\n}\n.ractive-datepicker .years::-webkit-scrollbar,\n.ractive-datepicker .hours::-webkit-scrollbar,\n.ractive-datepicker .minutes::-webkit-scrollbar {\n  display: none;\n}\n.ractive-datepicker .years div,\n.ractive-datepicker .hours div,\n.ractive-datepicker .minutes div {\n  font-size: 1.4em;\n  margin: 1em 0;\n  cursor: pointer;\n}\n.ractive-datepicker .years div.selected,\n.ractive-datepicker .hours div.selected,\n.ractive-datepicker .minutes div.selected {\n  font-weight: bold;\n  margin: 0.5em 0;\n  display: inline-block;\n  cursor: default;\n}\n.ractive-datepicker .minutes,\n.ractive-datepicker .hours {\n  display: inline-block;\n}\n.header-year {\n  background: #333;\n  color: #aaa;\n  padding-left: 25px;\n  padding-top: 15px;\n  margin-bottom: 0px;\n}\n.show-in-compact {\n  display: none;\n}\n.hide-in-compact {\n  display: initial;\n}\n@media (max-width: 700px) {\n  .ractive-datepicker {\n    flex-direction: column;\n    font-size: 0.8em;\n  }\n  .ractive-datepicker .header {\n    display: flex;\n    flex-direction: row;\n    align-items: flex-end;\n    padding: 1em;\n    padding-top: 15px;\n    font-size: 25px;\n    min-width: 0px;\n  }\n  .ractive-datepicker .header .time {\n    margin: 0;\n    padding: 0;\n    font-size: 20px;\n    position: absolute;\n    right: 1em;\n  }\n  .ractive-datepicker .header .weekday {\n    font-size: 1em;\n  }\n  .ractive-datepicker .header div {\n    display: inline;\n  }\n  .ractive-datepicker .header > div {\n    margin-top: 0 !important;\n    margin-bottom: 0;\n  }\n  .ractive-datepicker .header .active:after {\n    border-right-color: transparent;\n    border-bottom-color: #fff;\n    left: 50%;\n    right: auto;\n    bottom: -1.5em;\n    margin-top: 0;\n    margin-left: -10px;\n  }\n  .ractive-datepicker .editor {\n    flex: 1 1;\n  }\n  .ractive-datepicker .show-in-compact {\n    display: initial;\n  }\n  .ractive-datepicker .hide-in-compact {\n    display: none !important;\n  }\n}\n.ractive-datepicker.compact {\n  flex-direction: column;\n  font-size: 0.8em;\n}\n.ractive-datepicker.compact .header {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-end;\n  padding: 1em;\n  padding-top: 15px;\n  font-size: 25px;\n  min-width: 0px;\n}\n.ractive-datepicker.compact .header .time {\n  margin: 0;\n  padding: 0;\n  font-size: 20px;\n  position: absolute;\n  right: 1em;\n}\n.ractive-datepicker.compact .header .weekday {\n  font-size: 1em;\n}\n.ractive-datepicker.compact .header div {\n  display: inline;\n}\n.ractive-datepicker.compact .header > div {\n  margin-top: 0 !important;\n  margin-bottom: 0;\n}\n.ractive-datepicker.compact .header .active:after {\n  border-right-color: transparent;\n  border-bottom-color: #fff;\n  left: 50%;\n  right: auto;\n  bottom: -1.5em;\n  margin-top: 0;\n  margin-left: -10px;\n}\n.ractive-datepicker.compact .editor {\n  flex: 1 1;\n}\n.ractive-datepicker.compact .show-in-compact {\n  display: initial;\n}\n.ractive-datepicker.compact .hide-in-compact {\n  display: none !important;\n}\n", ""]);
+exports.push([module.i, ".ractive-datepicker {\n  display: inline-flex;\n  flex-direction: row;\n  background: #fff;\n}\n.ractive-datepicker,\n.ractive-datepicker *,\n.ractive-datepicker *:before,\n.ractive-datepicker *:after {\n  box-sizing: border-box;\n}\n.ractive-datepicker .header {\n  background: #333;\n  color: rgba(255,255,255,0.5);\n  padding: 2em;\n  min-width: 12em;\n  position: relative;\n  text-align: left;\n}\n.ractive-datepicker .header label {\n  font-size: 0.8em;\n  margin-bottom: 1em;\n  display: inline-block;\n  opacity: 0.5;\n}\n.ractive-datepicker .header > div {\n  cursor: pointer;\n}\n.ractive-datepicker .header.range .active:after {\n  content: none;\n}\n.ractive-datepicker .header .active {\n  color: #fff;\n  position: relative;\n}\n.ractive-datepicker .header .active:after {\n  content: '';\n  display: inline-block;\n  border: 10px solid transparent;\n  border-right-color: #fff;\n  position: absolute;\n  right: -2em;\n  top: 50%;\n  margin-top: -10px;\n}\n.ractive-datepicker .header .weekday {\n  font-size: 2em;\n}\n.ractive-datepicker .header .year {\n  display: block;\n}\n.ractive-datepicker .header .time {\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.ractive-datepicker .header .time span {\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.ractive-datepicker .header,\n.ractive-datepicker .dddd {\n  min-width: 15em;\n}\n.ractive-datepicker .editor {\n  white-space: nowrap;\n  flex: 1 1 66%;\n  padding: 2em;\n  position: relative;\n  user-select: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  position: absolute;\n  content: '';\n  top: 1em;\n  left: 0;\n  right: 0;\n  bottom: 1em;\n  pointer-events: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  background: linear-gradient(#fff, rgba(255,255,255,0), #fff);\n}\n.ractive-datepicker .editor .years:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: calc(50% - 3em);\n  right: calc(50% - 3em);\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .hours:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 3em;\n  right: 14em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .minutes:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 14em;\n  right: 3em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n/*\n        .years:after, .hours:after, .minutes:after\n            border-bottom 2px solid #AAA\n            border-top 2px solid #AAA\n*/\n.monthyear {\n  white-space: initial;\n  font-weight: bold;\n  text-align: center;\n  margin-bottom: 1em;\n}\n.monthyear span {\n  cursor: pointer;\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.nav {\n  white-space: initial;\n  position: relative;\n}\n.nav .next,\n.nav .previous {\n  user-select: none;\n  position: absolute;\n  padding: 0.5em;\n  display: inline-block;\n  cursor: pointer;\n  top: -0.5em;\n}\n.nav .previous {\n  left: 2.5em;\n}\n.nav .previous:before {\n  content: '<';\n}\n.nav .next {\n  right: 2.5em;\n}\n.nav .next:before {\n  content: '>';\n}\n.days {\n  white-space: initial;\n}\n.weekdays {\n  display: flex;\n  opacity: 0.5;\n  font-weight: bold;\n}\n.dates > div,\n.weekdays > div {\n  display: inline-block;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  text-align: center;\n}\n.dates {\n  max-width: 21em;\n  margin-bottom: -0.5em;\n}\n.hours,\n.minutes {\n  width: 50%;\n  height: 23em;\n  display: inline-block;\n}\n.hours {\n  text-align: right;\n  padding-right: 1em;\n}\n.minutes {\n  text-align: left;\n  padding-left: 1em;\n}\n.years,\n.clock {\n  width: 21em;\n  height: 23em;\n}\n.clock:after {\n  position: absolute;\n  content: ':';\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  pointer-events: none;\n  vertical-align: middle;\n  font-weight: bold;\n  text-align: center;\n  line-height: 27em;\n  font-size: 1em;\n}\n.dates {\n  user-select: none;\n}\n.dates .selected,\n.dates .start {\n  transition: border-radius 0.3s ease;\n}\n.dates > div {\n  user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected) {\n  cursor: pointer;\n  border-radius: 50%;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected):hover {\n  background: #f0f0f0;\n}\n.dates .off:not(.ghost) {\n  opacity: 0.25;\n}\n.dates .between {\n  background: #d8eff1;\n}\n.dates .between.ghost {\n  background: rgba(216,239,241,0.25);\n}\n.dates > div.selected,\n.dates > div.start,\n.dates > div.end {\n  background: #0097a7;\n  color: #fff;\n  border-radius: 50%;\n}\n.dates > div.selected.ghost,\n.dates > div.start.ghost,\n.dates > div.end.ghost {\n  background: rgba(0,151,167,0.25);\n  color: inherit;\n  cursor: pointer;\n}\n.dates .start {\n  border-radius: 50% 0 0 50% !important;\n}\n.dates .end {\n  border-radius: 0 50% 50% 0 !important;\n}\n.years {\n  text-align: center;\n}\n.years,\n.hours,\n.minutes {\n  z-index: 100;\n  white-space: initial;\n  overflow-y: scroll;\n}\n.years::-webkit-scrollbar,\n.hours::-webkit-scrollbar,\n.minutes::-webkit-scrollbar {\n  display: none;\n}\n.years div,\n.hours div,\n.minutes div {\n  font-size: 1.4em;\n  margin: 1em 0;\n  cursor: pointer;\n}\n.years div.selected,\n.hours div.selected,\n.minutes div.selected {\n  font-weight: bold;\n  margin: 0.5em 0;\n  display: inline-block;\n  cursor: default;\n}\n.header-year {\n  background: #333;\n  color: #aaa;\n  padding-left: 25px;\n  padding-top: 15px;\n  margin-bottom: 0px;\n}\n.show-in-compact {\n  display: none;\n}\n.hide-in-compact {\n  display: initial;\n}\n@media (max-width: 700px) {\n  .ractive-datepicker {\n    flex-direction: column;\n    font-size: 0.8em;\n  }\n  .ractive-datepicker .header {\n    display: flex;\n    flex-direction: row;\n    align-items: flex-end;\n    padding: 1em;\n    padding-top: 15px;\n    font-size: 25px;\n    min-width: 0px;\n  }\n  .ractive-datepicker .header .time {\n    margin: 0;\n    padding: 0;\n    font-size: 20px;\n    position: absolute;\n    right: 1em;\n  }\n  .ractive-datepicker .header .weekday {\n    font-size: 1em;\n  }\n  .ractive-datepicker .header div {\n    display: inline;\n  }\n  .ractive-datepicker .header > div {\n    margin-top: 0 !important;\n    margin-bottom: 0;\n  }\n  .ractive-datepicker .header .active:after {\n    border-right-color: transparent;\n    border-bottom-color: #fff;\n    left: 50%;\n    right: auto;\n    bottom: -1.5em;\n    margin-top: 0;\n    margin-left: -10px;\n  }\n  .ractive-datepicker .editor {\n    flex: 1 1;\n  }\n  .ractive-datepicker .show-in-compact {\n    display: initial;\n  }\n  .ractive-datepicker .hide-in-compact {\n    display: none !important;\n  }\n}\n.ractive-datepicker.compact {\n  flex-direction: column;\n  font-size: 0.8em;\n}\n.ractive-datepicker.compact .header {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-end;\n  padding: 1em;\n  padding-top: 15px;\n  font-size: 25px;\n  min-width: 0px;\n}\n.ractive-datepicker.compact .header .time {\n  margin: 0;\n  padding: 0;\n  font-size: 20px;\n  position: absolute;\n  right: 1em;\n}\n.ractive-datepicker.compact .header .weekday {\n  font-size: 1em;\n}\n.ractive-datepicker.compact .header div {\n  display: inline;\n}\n.ractive-datepicker.compact .header > div {\n  margin-top: 0 !important;\n  margin-bottom: 0;\n}\n.ractive-datepicker.compact .header .active:after {\n  border-right-color: transparent;\n  border-bottom-color: #fff;\n  left: 50%;\n  right: auto;\n  bottom: -1.5em;\n  margin-top: 0;\n  margin-left: -10px;\n}\n.ractive-datepicker.compact .editor {\n  flex: 1 1;\n}\n.ractive-datepicker.compact .show-in-compact {\n  display: initial;\n}\n.ractive-datepicker.compact .hide-in-compact {\n  display: none !important;\n}\n", ""]);
 
 // exports
 
@@ -1435,7 +1435,7 @@ module.exports = Ractive.extend({
             editing: 'date',
             years: [],
             hours: Array.apply(0, Array(23 * 3)).map(function (a, i) { return (i % 24) }),
-            minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) }),
+            minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) < 10 ? '0' + (i % 60) : i % 60 }),
 
             lastSet: 'end',
 
@@ -1475,14 +1475,7 @@ module.exports = Ractive.extend({
             },
             weekday: function (d) {
                 return moment(d).format(_this['weekday-format']);
-            },
-
-            meridiem: function (d) {
-                if (d.getHours)
-                    d = d.getHours();
-                return d < 12 ? 'am' : 'pm';
-            },
-
+            }
         }
         return _this;
     },
@@ -1581,6 +1574,13 @@ module.exports = Ractive.extend({
     },
 
     oninit: function () {
+        window.onresize = function (event) {
+            console.warn("resize...");
+            setPosition('.hours');
+            setPosition('.minutes');
+            setPosition('.years');
+        }
+
         var self = this;
 
         self.on('decrementMonth', function (details) {
@@ -1689,7 +1689,6 @@ module.exports = Ractive.extend({
         });
 
         self.on('setMinutes', function (details) {
-            console.warn("setMinutes", details);
             details.context = details.context % 60;
             var date = self.get('date');
             date.setMinutes(details.context);
@@ -1731,36 +1730,22 @@ module.exports = Ractive.extend({
 
         function setPosition(selector) {
             var element = self.find(selector);
+            if (!element)
+                return;
             var actives = self.findAll(selector + ' .active');
+            if (!actives)
+                return
             var active = actives[1];
             if (!active)
                 return;
+
+            fixOverscroll(selector);
             var styles = window.getComputedStyle(self.find('.editor'));
             var offset = parseInt(styles.paddingTop, 10);
             var target = active.offsetTop - element.offsetHeight / 2 + active.clientHeight / 2 - offset;
             var len = actives[1].offsetTop - actives[0].offsetTop;
             target = (target % len) + len;
-            //element.scrollTop = ;
             smooth(100, element, target);
-        }
-
-        function smooth2(scrollDuration, element, target) {
-            var steps = 0;
-            var maxSteps = (scrollDuration / 15);
-            var scrollHeight = target - element.scrollTop;
-            var scrollStep = scrollHeight / maxSteps;
-
-            var scrollInterval = setInterval(function () {
-                steps++;
-                if (steps >= maxSteps || Math.abs(element.scrollTop - target) < 0.5) {
-                    clearInterval(scrollInterval);
-                    element.scrollTop = target;
-                    return;
-                }
-                else {
-                    element.scrollTop += scrollStep;
-                }
-            }, 15);
         }
 
         function smooth(scrollDuration, element, target) {
@@ -1784,14 +1769,10 @@ module.exports = Ractive.extend({
                 }
             }, 15);
         }
+
         function snap(node, method, value) {
             if (!node)
                 return;
-
-            if (new Date().getTime() - lastScroll.getTime() < 500) {
-                debouncedSnap(node, method);
-                return;
-            }
 
             var div = node.querySelector('div');
             if (!div)
@@ -1821,163 +1802,8 @@ module.exports = Ractive.extend({
             if (method == 'setYear') fixOverscroll('.years');
             if (method == 'setHours') fixOverscroll('.hours');
             if (method == 'setMinutes') fixOverscroll('.minutes');
-            /*
-            if (method == 'setHours') {
-                var hours = self.find('.hours');
-                var actives = self.findAll('.hours .active');
-                if (hours.scrollTop >= (actives[1].offsetTop - actives[0].offsetTop) * 2) {
-                    hours.scrollTop = hours.scrollTop - (actives[1].offsetTop - actives[0].offsetTop);
-                }
-                else if (hours.scrollTop <= (actives[1].offsetTop - actives[0].offsetTop)) {
-                    hours.scrollTop = hours.scrollTop + (actives[1].offsetTop - actives[0].offsetTop);
-                }
-            }
-            if (method == 'setMinutes') {
-                var minutes = self.find('.minutes');
-                var act = self.findAll('.minutes .active');
-                if (minutes.scrollTop >= (act[1].offsetTop - act[0].offsetTop) * 2) {
-                    minutes.scrollTop = minutes.scrollTop - (act[1].offsetTop - act[0].offsetTop);
-                }
-                else if (minutes.scrollTop <= (act[1].offsetTop - act[0].offsetTop)) {
-                    minutes.scrollTop = minutes.scrollTop + (act[1].offsetTop - act[0].offsetTop);
-                }
-            }
-            */
             debouncedSnap(details.node, method);
         });
-
-        /* --------------------- */
-        // time editor stuff
-        /* --------------------- */
-        /*
-                var animating = {};
-                var meridiem = self.get('meridiem');
-        
-                function snap(node, method, value) {
-        
-                    var startY = node.scrollTop;
-        
-                    // no node, nothing to do
-                    if (!node) {
-                        return;
-                    }
-        
-                    // grab the first div and use to size
-                    var div = node.querySelector('div');
-        
-                    // the dom has been destroyed by the time the debounce
-                    // has happened, so just return
-                    if (!div)
-                        return;
-        
-                    //console.log('snap() ', arguments);
-        
-                    var styles = window.getComputedStyle(div);
-                    var divHeight = div.offsetHeight + parseFloat(styles.marginBottom);
-        
-                    var index;
-        
-                    if (!isNil(value)) {
-        
-                        // we're scrolling to a specific value passed in
-                        index = value;
-        
-                        // account for > 12 hours (pm)
-                        if (method == 'setHours' && value >= 12)
-                            index -= 12;
-        
-                    } else {
-                        // figure out the closest div to where we scrolled
-                        index = Math.round(startY / divHeight);
-                    }
-        
-                    if (index >= node.children.length)
-                        index = node.children.length - 1;
-        
-                    div = node.children[index];
-        
-                    var endY = div.offsetTop - divHeight - parseFloat(styles.marginTop) / 2 - parseFloat(styles.marginBottom) / 2;
-                    //var endY = divHeight*index + parseFloat(styles.marginBottom)/4;
-                    var deltaY = endY - startY;
-        
-                    // block the animation on subsequent calls
-                    // from the scroll event handler
-                    // but don't block is we're calling it direclty
-                    // with a value
-                    if (animating[method] && isNil(value))
-                        return;
-        
-                    animating[method] = animate({
-                        duration: 0.3,
-                        step: function (p) {
-                            node.scrollTop = startY + deltaY * p;
-                        },
-                        complete: function () {
-                            var editing = self.get('editing').replace('time', '') || 'date';
-                            var date = self.get(editing);
-        
-                            var value = parseInt(div.textContent);
-        
-                            if (method == 'setHours') {
-                                if (meridiem(value) == 'pm' && value !== 12)
-                                    value += 12;
-                                if (meridiem(value) == 'am' && value == 12)
-                                    value = 0;
-                            }
-        
-                            date[method](value);
-        
-                            self.set(editing, date);
-                            animating[method] = false;
-                            //console.log('complete: animating=', animating);
-                        }
-                    });
-        
-                    animating[method].animating = true;
-        
-                }
-        */
-        // needs to be debounced so that the UI is fully updated
-        // defer: true doesn't count it on the obserer
-
-        /*
-        updateTimeEditors = debounce(updateTimeEditors, 10);
-                // update scroll positions of clock editors when first viewed
-                self.observe('editing', updateTimeEditors, { init: false, defer: true });
-                // update scroll positions of clock editors when date changes
-                self.observe('date', updateTimeEditors, { init: false });
-        
-                function updateTimeEditors() {
-        
-                    if (self.get('editing').indexOf('time') < 0)
-                        return;
-        
-                    for (var key in animating)
-                        if (animating[key])
-                            return;
-        
-                    var editing = self.get('editing').replace('time', '') || 'date';
-                    var date = self.get(editing);
-        
-                    //snap(self.find('.clock .hours'), 'setHours', date.getHours());
-                    //snap(self.find('.clock .minutes'), 'setMinutes', date.getMinutes());
-                }
-        */
-        /*
-                var debouncedSnap = debounce(snap, 250);
-        
-                self.on('clockwheel', function (details, method) {
-                    var event = details.original;
-        
-                    for (var key in animating)
-                        if (animating[key].cancel)
-                            animating[key].cancel()
-        
-                    animating = {};
-        
-                    debouncedSnap(details.node, method);
-                });
-        */
     },
 
     // prevent computation errors for weird

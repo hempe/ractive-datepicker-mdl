@@ -117,15 +117,15 @@
 <div class="clock">
     <div class='hours' on-wheel-touchmove='wheel:setHours'>
         {{#with @this.get(editing.replace("time", "") || "date") as editing}} {{#hours}}
-        <div {{#if hour(editing)==this}}class='active' {{/if}} on-click='setHours'>
+        <div class="{{ hour(editing)==this ? 'active' : '' }}" on-click='setHours'>
             {{this}}
         </div>
         {{/}} {{/with}}
     </div>
     <div class='minutes' on-wheel-touchmove='wheel:setMinutes'>
         {{#with @this.get(editing.replace("time", "") || "date") as editing}} {{#minutes}}
-        <div {{#if minute(editing)==this}}class='active' {{/if}} on-click='setMinutes'>
-            {{this}}
+        <div class="{{ minute(editing)==this ? 'active' : '' }}" on-click='setMinutes'>
+            {{ this }}
         </div>
         {{/}} {{/with}}
     </div>

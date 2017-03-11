@@ -67,7 +67,7 @@ module.exports = Ractive.extend({
             editing: 'date',
             years: [],
             hours: Array.apply(0, Array(23 * 3)).map(function (a, i) { return (i % 24) }),
-            minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) }),
+            minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) < 10 ? '0' + (i % 60) : i % 60 }),
 
             lastSet: 'end',
 
@@ -107,14 +107,7 @@ module.exports = Ractive.extend({
             },
             weekday: function (d) {
                 return moment(d).format(_this['weekday-format']);
-            },
-
-            meridiem: function (d) {
-                if (d.getHours)
-                    d = d.getHours();
-                return d < 12 ? 'am' : 'pm';
-            },
-
+            }
         }
         return _this;
     },
@@ -213,6 +206,13 @@ module.exports = Ractive.extend({
     },
 
     oninit: function () {
+        window.onresize = function (event) {
+            console.warn("resize...");
+            setPosition('.hours');
+            setPosition('.minutes');
+            setPosition('.years');
+        }
+
         var self = this;
 
         self.on('decrementMonth', function (details) {
@@ -321,7 +321,6 @@ module.exports = Ractive.extend({
         });
 
         self.on('setMinutes', function (details) {
-            console.warn("setMinutes", details);
             details.context = details.context % 60;
             var date = self.get('date');
             date.setMinutes(details.context);
@@ -363,10 +362,16 @@ module.exports = Ractive.extend({
 
         function setPosition(selector) {
             var element = self.find(selector);
+            if (!element)
+                return;
             var actives = self.findAll(selector + ' .active');
+            if (!actives)
+                return
             var active = actives[1];
             if (!active)
                 return;
+
+            fixOverscroll(selector);
             var styles = window.getComputedStyle(self.find('.editor'));
             var offset = parseInt(styles.paddingTop, 10);
             var target = active.offsetTop - element.offsetHeight / 2 + active.clientHeight / 2 - offset;
@@ -401,11 +406,6 @@ module.exports = Ractive.extend({
             if (!node)
                 return;
 
-            if (new Date().getTime() - lastScroll.getTime() < 500) {
-                debouncedSnap(node, method);
-                return;
-            }
-
             var div = node.querySelector('div');
             if (!div)
                 return;
@@ -434,163 +434,8 @@ module.exports = Ractive.extend({
             if (method == 'setYear') fixOverscroll('.years');
             if (method == 'setHours') fixOverscroll('.hours');
             if (method == 'setMinutes') fixOverscroll('.minutes');
-            /*
-            if (method == 'setHours') {
-                var hours = self.find('.hours');
-                var actives = self.findAll('.hours .active');
-                if (hours.scrollTop >= (actives[1].offsetTop - actives[0].offsetTop) * 2) {
-                    hours.scrollTop = hours.scrollTop - (actives[1].offsetTop - actives[0].offsetTop);
-                }
-                else if (hours.scrollTop <= (actives[1].offsetTop - actives[0].offsetTop)) {
-                    hours.scrollTop = hours.scrollTop + (actives[1].offsetTop - actives[0].offsetTop);
-                }
-            }
-            if (method == 'setMinutes') {
-                var minutes = self.find('.minutes');
-                var act = self.findAll('.minutes .active');
-                if (minutes.scrollTop >= (act[1].offsetTop - act[0].offsetTop) * 2) {
-                    minutes.scrollTop = minutes.scrollTop - (act[1].offsetTop - act[0].offsetTop);
-                }
-                else if (minutes.scrollTop <= (act[1].offsetTop - act[0].offsetTop)) {
-                    minutes.scrollTop = minutes.scrollTop + (act[1].offsetTop - act[0].offsetTop);
-                }
-            }
-            */
             debouncedSnap(details.node, method);
         });
-
-        /* --------------------- */
-        // time editor stuff
-        /* --------------------- */
-        /*
-                var animating = {};
-                var meridiem = self.get('meridiem');
-        
-                function snap(node, method, value) {
-        
-                    var startY = node.scrollTop;
-        
-                    // no node, nothing to do
-                    if (!node) {
-                        return;
-                    }
-        
-                    // grab the first div and use to size
-                    var div = node.querySelector('div');
-        
-                    // the dom has been destroyed by the time the debounce
-                    // has happened, so just return
-                    if (!div)
-                        return;
-        
-                    //console.log('snap() ', arguments);
-        
-                    var styles = window.getComputedStyle(div);
-                    var divHeight = div.offsetHeight + parseFloat(styles.marginBottom);
-        
-                    var index;
-        
-                    if (!isNil(value)) {
-        
-                        // we're scrolling to a specific value passed in
-                        index = value;
-        
-                        // account for > 12 hours (pm)
-                        if (method == 'setHours' && value >= 12)
-                            index -= 12;
-        
-                    } else {
-                        // figure out the closest div to where we scrolled
-                        index = Math.round(startY / divHeight);
-                    }
-        
-                    if (index >= node.children.length)
-                        index = node.children.length - 1;
-        
-                    div = node.children[index];
-        
-                    var endY = div.offsetTop - divHeight - parseFloat(styles.marginTop) / 2 - parseFloat(styles.marginBottom) / 2;
-                    //var endY = divHeight*index + parseFloat(styles.marginBottom)/4;
-                    var deltaY = endY - startY;
-        
-                    // block the animation on subsequent calls
-                    // from the scroll event handler
-                    // but don't block is we're calling it direclty
-                    // with a value
-                    if (animating[method] && isNil(value))
-                        return;
-        
-                    animating[method] = animate({
-                        duration: 0.3,
-                        step: function (p) {
-                            node.scrollTop = startY + deltaY * p;
-                        },
-                        complete: function () {
-                            var editing = self.get('editing').replace('time', '') || 'date';
-                            var date = self.get(editing);
-        
-                            var value = parseInt(div.textContent);
-        
-                            if (method == 'setHours') {
-                                if (meridiem(value) == 'pm' && value !== 12)
-                                    value += 12;
-                                if (meridiem(value) == 'am' && value == 12)
-                                    value = 0;
-                            }
-        
-                            date[method](value);
-        
-                            self.set(editing, date);
-                            animating[method] = false;
-                            //console.log('complete: animating=', animating);
-                        }
-                    });
-        
-                    animating[method].animating = true;
-        
-                }
-        */
-        // needs to be debounced so that the UI is fully updated
-        // defer: true doesn't count it on the obserer
-
-        /*
-        updateTimeEditors = debounce(updateTimeEditors, 10);
-                // update scroll positions of clock editors when first viewed
-                self.observe('editing', updateTimeEditors, { init: false, defer: true });
-                // update scroll positions of clock editors when date changes
-                self.observe('date', updateTimeEditors, { init: false });
-        
-                function updateTimeEditors() {
-        
-                    if (self.get('editing').indexOf('time') < 0)
-                        return;
-        
-                    for (var key in animating)
-                        if (animating[key])
-                            return;
-        
-                    var editing = self.get('editing').replace('time', '') || 'date';
-                    var date = self.get(editing);
-        
-                    //snap(self.find('.clock .hours'), 'setHours', date.getHours());
-                    //snap(self.find('.clock .minutes'), 'setMinutes', date.getMinutes());
-                }
-        */
-        /*
-                var debouncedSnap = debounce(snap, 250);
-        
-                self.on('clockwheel', function (details, method) {
-                    var event = details.original;
-        
-                    for (var key in animating)
-                        if (animating[key].cancel)
-                            animating[key].cancel()
-        
-                    animating = {};
-        
-                    debouncedSnap(details.node, method);
-                });
-        */
     },
 
     // prevent computation errors for weird
