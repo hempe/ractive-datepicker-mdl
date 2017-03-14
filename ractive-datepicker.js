@@ -73,11 +73,34 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = (function () {
+    function _scrollToCenter(div, child) {
+        return child.offsetTop - div.offsetTop - div.offsetHeight * .5 + child.offsetHeight * .5;
+    }
+    return {
+        scrollToCenter: function (div, child) {
+            return _scrollToCenter(div, child);
+        },
+        divAtCenter: function (div, children) {
+            for (var i = 0; i < children.length; i++) {
+                if (_scrollToCenter(div, children[i]) >= div.scrollTop)
+                    return children[i];
+            }
+            return children[children.length - 1];
+        }
+    }
+})();
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
 /*
@@ -133,10 +156,10 @@ module.exports = function() {
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(2);
+var root = __webpack_require__(3);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -145,10 +168,10 @@ module.exports = Symbol;
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(16);
+var freeGlobal = __webpack_require__(17);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -160,7 +183,7 @@ module.exports = root;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /**
@@ -197,7 +220,7 @@ module.exports = isObject;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -449,12 +472,12 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(3),
-    now = __webpack_require__(21),
-    toNumber = __webpack_require__(22);
+var isObject = __webpack_require__(4),
+    now = __webpack_require__(22),
+    toNumber = __webpack_require__(23);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -643,7 +666,7 @@ module.exports = debounce;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 /**
@@ -674,7 +697,7 @@ module.exports = isNil;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -740,17 +763,17 @@ module.exports = isNil;
 }));
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
-module.exports={"v":4,"t":[{"t":7,"e":"div","m":[{"n":"class","f":["ractive-datepicker ",{"t":2,"r":"class"}],"t":13},{"n":"style","f":[{"t":2,"r":"style"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"header-year show-in-compact","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," - ",{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":["header ",{"t":2,"rx":{"r":".","m":[{"r":[],"s":"\"weekday-format\""}]}}],"t":13},{"n":"class-range","f":[{"t":2,"r":"range"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["Start"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","start"],"s":"_0(_1)"}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","start"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["start"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"starttime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"starttime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit start time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","start"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}," ",{"t":7,"e":"br"}," ",{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["End"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","end"],"s":"_1&&_0(_1)||\"---\""}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","end"],"s":"_1&&_0(_1)"}}," ",{"t":2,"x":{"r":["end"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"endtime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"endtime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit end time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","end"],"s":"_1&&_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekdayShort","date"],"s":"_0(_1)"}},","]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekday","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","date"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["date"],"s":"_0 instanceof Date?_0.getDate():\"\""}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"time\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"time\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","date"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":7,"e":"div","m":[{"n":"class","f":"editor","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"years","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setYear"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["year","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"fixYear","t":70}],"f":[{"t":2,"r":"."}]}],"i":"i","r":"years"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"year\",\"\")||\"date\")"}}}]}]}],"n":50,"x":{"r":["editing"],"s":"_0.indexOf(\"year\")>-1"}},{"t":4,"n":50,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"nav","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"previous","t":13},{"n":"click","f":"decrementMonth","t":70}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"next","t":13},{"n":"click","f":"incrementMonth","t":70}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"monthyear","t":13}],"f":[{"t":2,"r":"currentMonth"}," ",{"t":7,"e":"span","m":[{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"year\")]"}},"t":70},{"f":{"n":"tooltip","a":["Jump to specific year"]},"t":71}],"f":[{"t":2,"r":"currentYear"}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"days","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"weekdays","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","f":[{"t":2,"r":"."}]}],"r":"daysOfWeek"}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"dates","t":13},{"n":"mouseleave","f":{"x":{"r":["@this"],"s":"[_0.set(\"ghostEnd\",null)]"}},"t":70}],"f":[{"t":4,"f":[{"t":19,"f":[{"t":4,"f":[{"t":19,"f":[{"t":7,"e":"div","m":[{"n":"class-start","f":[{"t":2,"x":{"r":["ghostEnd",".","mStart","end"],"s":"(_0||_3)&&_2.isSame(_1,\"day\")&&!_2.isSame(_3,\"day\")"}}],"t":13},{"n":"class-between","f":[{"t":2,"x":{"r":["end","mThis","start","ghostEnd"],"s":"_1.isBetween(_2,_0)||_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"class-end","f":[{"t":2,"x":{"r":["mEnd","mGhostEnd",".","mThis","start"],"s":"(_0.isSame(_2,\"day\")||_1.isSame(_2,\"day\"))&&!_3.isSame(_4,\"day\")"}}],"t":13},{"n":"class-ghost","f":[{"t":2,"x":{"r":["ghostEnd","mThis","start","end"],"s":"!_1.isBefore(_2)&&(_1.isBetween(_2,_0)||_1.isSame(_0,\"day\"))&&!_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-selected","f":[{"t":2,"x":{"r":["mThis","start","ghostEnd","end"],"s":"_0.isSame(_1,\"day\")&&!_2&&!_3"}}],"t":13},{"n":"hover","f":{"x":{"r":["@this","lastSet","mThis","start","."],"s":"[_0.set(\"ghostEnd\",_1==\"start\"&&_2.isAfter(_3)?_4:null)]"}},"t":70},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"n":54,"z":[{"n":"mThis","x":{"x":{"r":["moment","."],"s":"_0(_1)"}}}]}],"r":"dates"}],"n":54,"z":[{"n":"mStart","x":{"x":{"r":["moment","start"],"s":"_0(_1)"}}},{"n":"mEnd","x":{"x":{"r":["moment","end"],"s":"_0(_1)"}}},{"n":"mGhostEnd","x":{"x":{"r":["moment","ghostEnd"],"s":"_0(_1)"}}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class-selected","f":[{"t":2,"x":{"r":["date","."],"s":"_0 instanceof Date&&_0.getFullYear()==_1.getFullYear()&&_0.getMonth()==_1.getMonth()&&_0.getDate()==_1.getDate()"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"r":"dates"}],"l":1}]}]}],"x":{"r":["editing"],"s":"_0==\"date\""},"l":1},{"t":4,"n":50,"f":[" ",{"t":7,"e":"div","m":[{"n":"class","f":"clock","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"hours","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setHours"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["hour","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setHours","t":70}],"f":[{"t":2,"r":"."}]}],"r":"hours"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"minutes","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setMinutes"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["minute","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setMinutes","t":70}],"f":[{"t":2,"r":"."}]}],"r":"minutes"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}]}],"x":{"r":["editing"],"s":"_0.indexOf(\"time\")>-1"},"l":1}]}]}],"e":{}};
+module.exports={"v":4,"t":[{"t":7,"e":"div","m":[{"n":"class","f":["ractive-datepicker ",{"t":2,"r":"class"}],"t":13},{"n":"style","f":[{"t":2,"r":"style"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"header-year show-in-compact","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," - ",{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":["header ",{"t":2,"rx":{"r":".","m":[{"r":[],"s":"\"weekday-format\""}]}}],"t":13},{"n":"class-range","f":[{"t":2,"r":"range"}],"t":13}],"f":[{"t":4,"f":[{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["Start"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","start"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","start"],"s":"_0(_1)"}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","start"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["start"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"starttime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"starttime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit start time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","start"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}," ",{"t":7,"e":"br"}," ",{"t":7,"e":"label","m":[{"n":"class","f":"hide-in-compact","t":13}],"f":["End"]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","end"],"s":"_1&&_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday","t":13}],"f":[{"t":2,"x":{"r":["weekday","end"],"s":"_1&&_0(_1)||\"---\""}},{"t":7,"e":"span","m":[{"n":"class","f":"show-in-compact","t":13}],"f":[","]}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","end"],"s":"_1&&_0(_1)"}}," ",{"t":2,"x":{"r":["end"],"s":"_0&&_0.getDate()"}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"endtime\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"endtime\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit end time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","end"],"s":"_1&&_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"date","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"date\"||_0==\"year\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"date\")]"}},"t":70}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"year hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["year","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday show-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekdayShort","date"],"s":"_0(_1)"}},","]}," ",{"t":7,"e":"span","m":[{"n":"class","f":"weekday hide-in-compact","t":13}],"f":[{"t":2,"x":{"r":["weekday","date"],"s":"_0(_1)"}}]}," ",{"t":7,"e":"div","f":[{"t":2,"x":{"r":["month","date"],"s":"_0(_1)"}}," ",{"t":2,"x":{"r":["date"],"s":"_0 instanceof Date?_0.getDate():\"\""}}]}]}," ",{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"time","t":13},{"n":"class-active","f":[{"t":2,"x":{"r":["editing"],"s":"_0==\"time\""}}],"t":13},{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"time\")]"}},"t":70},{"f":{"n":"tooltip","a":["Edit time"]},"t":71}],"f":[{"t":7,"e":"span","f":[{"t":2,"x":{"r":["time","date"],"s":"_0(_1)"}}]}]}],"n":50,"x":{"r":["mode"],"s":"_0==\"time\"||_0==\"datetime\""}}],"l":1}]}],"n":51,"x":{"r":["showHeader"],"s":"_0===false"}}," ",{"t":7,"e":"div","m":[{"n":"class","f":"editor","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"years","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setYear"]},"t":70},{"f":"preventOverscroll","t":71}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"overscroll-spacer","t":13}]}," ",{"t":19,"f":[{"t":4,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"hide","t":13}],"f":[{"t":2,"r":"."}]}],"n":50,"x":{"r":["."],"s":"_0==\"-1\""}},{"t":4,"n":51,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["year","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"fixYear","t":70}],"f":[{"t":2,"r":"."}]}],"l":1}],"i":"i","r":"years"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"year\",\"\")||\"date\")"}}}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"overscroll-spacer","t":13}]}]}],"n":50,"x":{"r":["editing"],"s":"_0.indexOf(\"year\")>-1"}},{"t":4,"n":50,"f":[{"t":7,"e":"div","m":[{"n":"class","f":"nav","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"previous","t":13},{"n":"click","f":"decrementMonth","t":70}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"next","t":13},{"n":"click","f":"incrementMonth","t":70}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"monthyear","t":13}],"f":[{"t":2,"r":"currentMonth"}," ",{"t":7,"e":"span","m":[{"n":"click","f":{"x":{"r":["@this"],"s":"[_0.set(\"editing\",\"year\")]"}},"t":70},{"f":{"n":"tooltip","a":["Jump to specific year"]},"t":71}],"f":[{"t":2,"r":"currentYear"}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"days","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"weekdays","t":13}],"f":[{"t":4,"f":[{"t":7,"e":"div","f":[{"t":2,"r":"."}]}],"r":"daysOfWeek"}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"dates","t":13},{"n":"mouseleave","f":{"x":{"r":["@this"],"s":"[_0.set(\"ghostEnd\",null)]"}},"t":70}],"f":[{"t":4,"f":[{"t":19,"f":[{"t":4,"f":[{"t":19,"f":[{"t":7,"e":"div","m":[{"n":"class-start","f":[{"t":2,"x":{"r":["ghostEnd",".","mStart","end"],"s":"(_0||_3)&&_2.isSame(_1,\"day\")&&!_2.isSame(_3,\"day\")"}}],"t":13},{"n":"class-between","f":[{"t":2,"x":{"r":["end","mThis","start","ghostEnd"],"s":"_1.isBetween(_2,_0)||_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"class-end","f":[{"t":2,"x":{"r":["mEnd","mGhostEnd",".","mThis","start"],"s":"(_0.isSame(_2,\"day\")||_1.isSame(_2,\"day\"))&&!_3.isSame(_4,\"day\")"}}],"t":13},{"n":"class-ghost","f":[{"t":2,"x":{"r":["ghostEnd","mThis","start","end"],"s":"!_1.isBefore(_2)&&(_1.isBetween(_2,_0)||_1.isSame(_0,\"day\"))&&!_1.isBetween(_2,_3)"}}],"t":13},{"n":"class-selected","f":[{"t":2,"x":{"r":["mThis","start","ghostEnd","end"],"s":"_0.isSame(_1,\"day\")&&!_2&&!_3"}}],"t":13},{"n":"hover","f":{"x":{"r":["@this","lastSet","mThis","start","."],"s":"[_0.set(\"ghostEnd\",_1==\"start\"&&_2.isAfter(_3)?_4:null)]"}},"t":70},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"n":54,"z":[{"n":"mThis","x":{"x":{"r":["moment","."],"s":"_0(_1)"}}}]}],"r":"dates"}],"n":54,"z":[{"n":"mStart","x":{"x":{"r":["moment","start"],"s":"_0(_1)"}}},{"n":"mEnd","x":{"x":{"r":["moment","end"],"s":"_0(_1)"}}},{"n":"mGhostEnd","x":{"x":{"r":["moment","ghostEnd"],"s":"_0(_1)"}}}]}],"n":50,"r":"range"},{"t":4,"n":51,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class-selected","f":[{"t":2,"x":{"r":["date","."],"s":"_0 instanceof Date&&_0.getFullYear()==_1.getFullYear()&&_0.getMonth()==_1.getMonth()&&_0.getDate()==_1.getDate()"}}],"t":13},{"n":"class-off","f":[{"t":2,"x":{"r":[".","current.month"],"s":"_0.getMonth()!==_1"}}],"t":13},{"n":"click","f":"setDate","t":70}],"f":[{"t":2,"x":{"r":["."],"s":"_0.getDate()"}}]}],"r":"dates"}],"l":1}]}]}],"x":{"r":["editing"],"s":"_0==\"date\""},"l":1},{"t":4,"n":50,"f":[" ",{"t":7,"e":"div","m":[{"n":"class","f":"clock","t":13}],"f":[{"t":7,"e":"div","m":[{"n":"class","f":"hours","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setHours"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["hour","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setHours","t":70}],"f":[{"t":2,"r":"."}]}],"r":"hours"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}," ",{"t":7,"e":"div","m":[{"n":"class","f":"minutes","t":13},{"n":"wheel-touchmove","f":{"n":"wheel","a":["setMinutes"]},"t":70}],"f":[{"t":19,"f":[{"t":4,"f":[{"t":7,"e":"div","m":[{"n":"class","f":[{"t":2,"x":{"r":["minute","editing","."],"s":"_0(_1)==_2?\"active\":\"\""}}],"t":13},{"n":"click","f":"setMinutes","t":70}],"f":[{"t":2,"r":"."}]}],"r":"minutes"}],"n":54,"z":[{"n":"editing","x":{"x":{"r":["@this","editing"],"s":"_0.get(_1.replace(\"time\",\"\")||\"date\")"}}}]}]}]}],"x":{"r":["editing"],"s":"_0.indexOf(\"time\")>-1"},"l":1}]}]}],"e":{}};
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-__webpack_require__(23);
+__webpack_require__(24);
 
 var win = window, doc = win.document;
 
@@ -870,16 +893,16 @@ module.exports = tooltipDecorator;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(13);
+var content = __webpack_require__(15);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -896,89 +919,118 @@ if(false) {
 }
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-//default ease from ease.js
-var ease = __webpack_require__(14);
-
-/**
- * Simple and easy RAF animation function
- *
- * Example:
- *
- *    animate({
- *        duration: 1.8,
- *        step: step,
- *        complete: function() {
- *           //stuff
- *        }
- *    });
- *
- *     function step(progress) {
- *        // `progress` ranges from 0 to 1 —- 0 start, 1 is done
- *     }
- *
- *
- * @param ani Object
- */
-function animate(params) {
-
-    var duration = typeof params.duration == 'undefined' ? 0.3 : params.duration;
-        duration *= 1000;
-        end = +new Date() + duration;
-
-    var request;
-
-    var step = function() {
-
-        var current = +new Date(),
-            remaining = end - current;
-
-        var rate = clamp(1 - remaining / duration, 0, 1);
-        rate = params.ease ? params.ease(rate) : ease(rate);
-
-        if (params.step)
-            params.step(rate);
-
-        if (remaining <= 0) {
-            if (params.complete) {
-                params.complete();
-                //request = requestAnimationFrame(params.complete);
-                return;
-            }
-        }
-
-        request = requestAnimationFrame(step);
-    };
-
-    if(duration === 0)
-        step();
-    else
-        request = requestAnimationFrame(step);
-
-    return {
-        cancel: function() {
-            cancelAnimationFrame(request);
-        }
-    };
-
-}
-
-function clamp(n, min, max) {
-  return Math.min(Math.max(n, min), max);
-}
-
-
-module.exports = animate;
-
-
-/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)();
+
+var win = window;
+var doc = document;
+var scroll = __webpack_require__(0);
+module.exports = function (node, instance) {
+
+    node.addEventListener('mouseenter', disableScroll);
+    node.addEventListener('mouseleave', enableScroll);
+
+    function prevent(e) {
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+        return false;
+    }
+
+    function preventDefault(e) {
+        e = e || win.event;
+        var scrollto = node.scrollTop + e.deltaY;
+        if (!node.querySelectorAll('div'))
+            return;
+        var all = node.querySelectorAll('div');
+        var min = scroll.scrollToCenter(node, all[1]);
+        if (scrollto <= min) {
+            node.scrollTop = min;
+            return prevent(e);
+        }
+        var max = scroll.scrollToCenter(node, all[all.length - 2]);
+        if (scrollto >= max) {
+            node.scrollTop = max;
+            return prevent(e);
+        }
+    }
+
+    function disableScroll() {
+        win.addEventListener('DOMMouseScroll', preventDefault, false);
+        win.addEventListener('wheel', preventDefault); // modern standard
+        win.addEventListener('mousewheel', preventDefault); // older browsers, IE
+        doc.addEventListener('mousewheel', preventDefault);
+        win.addEventListener('touchmove', preventDefault); // mobile
+    }
+
+    function enableScroll() {
+        win.removeEventListener('DOMMouseScroll', preventDefault, false);
+        win.removeEventListener('wheel', preventDefault); // modern standard
+        win.removeEventListener('mousewheel', preventDefault); // older browsers, IE
+        doc.removeEventListener('mousewheel', preventDefault);
+        win.removeEventListener('touchmove', preventDefault); // mobile
+    }
+
+    return {
+        teardown: function () {
+            console.warn("teardown....");
+            enableScroll();
+            node.removeEventListener('mouseenter', disableScroll);
+            node.removeEventListener('mouseleave', enableScroll);
+        }
+    }
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = (function () {
+
+    function _stopSmooth(selector) {
+        if (_smoothActive[selector]) {
+            clearInterval(_smoothActive[selector]);
+            delete _smoothActive[selector];
+        }
+    }
+
+    var _smoothActive = [];
+    function _smooth(scrollDuration, element, target, selector) {
+        _stopSmooth(selector);
+        var steps = 0;
+        var maxSteps = (scrollDuration / 15);
+        var scrollMargin = 0;
+        var scrollStep = Math.PI / maxSteps;
+        var cosParameter = (target - element.scrollTop) / 2;
+        var pos = element.scrollTop;
+
+        _smoothActive[selector] = setInterval(function () {
+            steps++;
+            if (steps >= maxSteps || Math.abs(element.scrollTop - target) < 0.5) {
+                _stopSmooth(selector);
+                element.scrollTop = target;
+            }
+            else {
+                scrollMargin = cosParameter - cosParameter * Math.cos(steps * scrollStep);
+                element.scrollTop = pos + scrollMargin;
+            }
+        }, 15);
+    }
+
+    return {
+        smooth: function (scrollDuration, element, target, selector) {
+            _smooth(scrollDuration, element, target, selector);
+        }
+    }
+})();
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
 // imports
 
 
@@ -989,37 +1041,26 @@ exports.push([module.i, ".ractive-tooltip {\n  position: absolute;\n  display: t
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(0)();
+exports = module.exports = __webpack_require__(1)();
 // imports
 
 
 // module
-exports.push([module.i, ".ractive-datepicker {\n  display: inline-flex;\n  flex-direction: row;\n  background: #fff;\n}\n.ractive-datepicker,\n.ractive-datepicker *,\n.ractive-datepicker *:before,\n.ractive-datepicker *:after {\n  box-sizing: border-box;\n}\n.ractive-datepicker .header {\n  background: #333;\n  color: rgba(255,255,255,0.5);\n  padding: 2em;\n  min-width: 12em;\n  position: relative;\n  text-align: left;\n}\n.ractive-datepicker .header label {\n  font-size: 0.8em;\n  margin-bottom: 1em;\n  display: inline-block;\n  opacity: 0.5;\n}\n.ractive-datepicker .header > div {\n  cursor: pointer;\n}\n.ractive-datepicker .header.range .active:after {\n  content: none;\n}\n.ractive-datepicker .header .active {\n  color: #fff;\n  position: relative;\n}\n.ractive-datepicker .header .active:after {\n  content: '';\n  display: inline-block;\n  border: 10px solid transparent;\n  border-right-color: #fff;\n  position: absolute;\n  right: -2em;\n  top: 50%;\n  margin-top: -10px;\n}\n.ractive-datepicker .header .weekday {\n  font-size: 2em;\n}\n.ractive-datepicker .header .year {\n  display: block;\n}\n.ractive-datepicker .header .time {\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.ractive-datepicker .header .time span {\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.ractive-datepicker .header,\n.ractive-datepicker .dddd {\n  min-width: 15em;\n}\n.ractive-datepicker .editor {\n  white-space: nowrap;\n  flex: 1 1 66%;\n  padding: 2em;\n  position: relative;\n  user-select: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  position: absolute;\n  content: '';\n  top: 1em;\n  left: 0;\n  right: 0;\n  bottom: 1em;\n  pointer-events: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  background: linear-gradient(#fff, rgba(255,255,255,0), #fff);\n}\n.ractive-datepicker .editor .years:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: calc(50% - 3em);\n  right: calc(50% - 3em);\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .hours:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 3em;\n  right: 14em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .minutes:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 14em;\n  right: 3em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n/*\n        .years:after, .hours:after, .minutes:after\n            border-bottom 2px solid #AAA\n            border-top 2px solid #AAA\n*/\n.monthyear {\n  white-space: initial;\n  font-weight: bold;\n  text-align: center;\n  margin-bottom: 1em;\n}\n.monthyear span {\n  cursor: pointer;\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.nav {\n  white-space: initial;\n  position: relative;\n}\n.nav .next,\n.nav .previous {\n  user-select: none;\n  position: absolute;\n  padding: 0.5em;\n  display: inline-block;\n  cursor: pointer;\n  top: -0.5em;\n}\n.nav .previous {\n  left: 2.5em;\n}\n.nav .previous:before {\n  content: '<';\n}\n.nav .next {\n  right: 2.5em;\n}\n.nav .next:before {\n  content: '>';\n}\n.days {\n  white-space: initial;\n}\n.weekdays {\n  display: flex;\n  opacity: 0.5;\n  font-weight: bold;\n}\n.dates > div,\n.weekdays > div {\n  display: inline-block;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  text-align: center;\n}\n.dates {\n  max-width: 21em;\n  margin-bottom: -0.5em;\n}\n.hours,\n.minutes {\n  width: 50%;\n  height: 23em;\n  display: inline-block;\n}\n.hours {\n  text-align: right;\n  padding-right: 1em;\n}\n.minutes {\n  text-align: left;\n  padding-left: 1em;\n}\n.years,\n.clock {\n  width: 21em;\n  height: 23em;\n}\n.clock:after {\n  position: absolute;\n  content: ':';\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  pointer-events: none;\n  vertical-align: middle;\n  font-weight: bold;\n  text-align: center;\n  line-height: 27em;\n  font-size: 1em;\n}\n.dates {\n  user-select: none;\n}\n.dates .selected,\n.dates .start {\n  transition: border-radius 0.3s ease;\n}\n.dates > div {\n  user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected) {\n  cursor: pointer;\n  border-radius: 50%;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected):hover {\n  background: #f0f0f0;\n}\n.dates .off:not(.ghost) {\n  opacity: 0.25;\n}\n.dates .between {\n  background: #d8eff1;\n}\n.dates .between.ghost {\n  background: rgba(216,239,241,0.25);\n}\n.dates > div.selected,\n.dates > div.start,\n.dates > div.end {\n  background: #0097a7;\n  color: #fff;\n  border-radius: 50%;\n}\n.dates > div.selected.ghost,\n.dates > div.start.ghost,\n.dates > div.end.ghost {\n  background: rgba(0,151,167,0.25);\n  color: inherit;\n  cursor: pointer;\n}\n.dates .start {\n  border-radius: 50% 0 0 50% !important;\n}\n.dates .end {\n  border-radius: 0 50% 50% 0 !important;\n}\n.years {\n  text-align: center;\n}\n.years,\n.hours,\n.minutes {\n  z-index: 100;\n  white-space: initial;\n  overflow-y: scroll;\n}\n.years::-webkit-scrollbar,\n.hours::-webkit-scrollbar,\n.minutes::-webkit-scrollbar {\n  display: none;\n}\n.years div,\n.hours div,\n.minutes div {\n  font-size: 1.4em;\n  margin: 1em 0;\n  cursor: pointer;\n}\n.years div.selected,\n.hours div.selected,\n.minutes div.selected {\n  font-weight: bold;\n  margin: 0.5em 0;\n  display: inline-block;\n  cursor: default;\n}\n.header-year {\n  background: #333;\n  color: #aaa;\n  padding-left: 25px;\n  padding-top: 15px;\n  margin-bottom: 0px;\n}\n.show-in-compact {\n  display: none;\n}\n.hide-in-compact {\n  display: initial;\n}\n@media (max-width: 700px) {\n  .ractive-datepicker {\n    flex-direction: column;\n    font-size: 0.8em;\n  }\n  .ractive-datepicker .header {\n    display: flex;\n    flex-direction: row;\n    align-items: flex-end;\n    padding: 1em;\n    padding-top: 15px;\n    font-size: 25px;\n    min-width: 0px;\n  }\n  .ractive-datepicker .header .time {\n    margin: 0;\n    padding: 0;\n    font-size: 20px;\n    position: absolute;\n    right: 1em;\n  }\n  .ractive-datepicker .header .weekday {\n    font-size: 1em;\n  }\n  .ractive-datepicker .header div {\n    display: inline;\n  }\n  .ractive-datepicker .header > div {\n    margin-top: 0 !important;\n    margin-bottom: 0;\n  }\n  .ractive-datepicker .header .active:after {\n    border-right-color: transparent;\n    border-bottom-color: #fff;\n    left: 50%;\n    right: auto;\n    bottom: -1.5em;\n    margin-top: 0;\n    margin-left: -10px;\n  }\n  .ractive-datepicker .editor {\n    flex: 1 1;\n  }\n  .ractive-datepicker .show-in-compact {\n    display: initial;\n  }\n  .ractive-datepicker .hide-in-compact {\n    display: none !important;\n  }\n}\n.ractive-datepicker.compact {\n  flex-direction: column;\n  font-size: 0.8em;\n}\n.ractive-datepicker.compact .header {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-end;\n  padding: 1em;\n  padding-top: 15px;\n  font-size: 25px;\n  min-width: 0px;\n}\n.ractive-datepicker.compact .header .time {\n  margin: 0;\n  padding: 0;\n  font-size: 20px;\n  position: absolute;\n  right: 1em;\n}\n.ractive-datepicker.compact .header .weekday {\n  font-size: 1em;\n}\n.ractive-datepicker.compact .header div {\n  display: inline;\n}\n.ractive-datepicker.compact .header > div {\n  margin-top: 0 !important;\n  margin-bottom: 0;\n}\n.ractive-datepicker.compact .header .active:after {\n  border-right-color: transparent;\n  border-bottom-color: #fff;\n  left: 50%;\n  right: auto;\n  bottom: -1.5em;\n  margin-top: 0;\n  margin-left: -10px;\n}\n.ractive-datepicker.compact .editor {\n  flex: 1 1;\n}\n.ractive-datepicker.compact .show-in-compact {\n  display: initial;\n}\n.ractive-datepicker.compact .hide-in-compact {\n  display: none !important;\n}\n", ""]);
+exports.push([module.i, ".ractive-datepicker {\n  display: inline-flex;\n  flex-direction: row;\n  background: #fff;\n}\n.ractive-datepicker,\n.ractive-datepicker *,\n.ractive-datepicker *:before,\n.ractive-datepicker *:after {\n  box-sizing: border-box;\n}\n.ractive-datepicker .header {\n  background: #333;\n  color: rgba(255,255,255,0.5);\n  padding: 2em;\n  min-width: 12em;\n  position: relative;\n  text-align: left;\n}\n.ractive-datepicker .header label {\n  font-size: 0.8em;\n  margin-bottom: 1em;\n  display: inline-block;\n  opacity: 0.5;\n}\n.ractive-datepicker .header > div {\n  cursor: pointer;\n}\n.ractive-datepicker .header.range .active:after {\n  content: none;\n}\n.ractive-datepicker .header .active {\n  color: #fff;\n  position: relative;\n}\n.ractive-datepicker .header .active:after {\n  content: '';\n  display: inline-block;\n  border: 10px solid transparent;\n  border-right-color: #fff;\n  position: absolute;\n  right: -2em;\n  top: 50%;\n  margin-top: -10px;\n}\n.ractive-datepicker .header .weekday {\n  font-size: 2em;\n}\n.ractive-datepicker .header .year {\n  display: block;\n}\n.ractive-datepicker .header .time {\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.ractive-datepicker .header .time span {\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.ractive-datepicker .header,\n.ractive-datepicker .dddd {\n  min-width: 15em;\n}\n.ractive-datepicker .editor {\n  white-space: nowrap;\n  flex: 1 1 66%;\n  padding: 2em;\n  position: relative;\n  user-select: none;\n}\n.ractive-datepicker .editor .overscroll-spacer {\n  height: 200px;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  position: absolute;\n  content: '';\n  top: 1em;\n  left: 0;\n  right: 0;\n  bottom: 1em;\n  pointer-events: none;\n}\n.ractive-datepicker .editor .years:before,\n.ractive-datepicker .editor .hours:before {\n  background: linear-gradient(#fff, rgba(255,255,255,0), #fff);\n}\n.ractive-datepicker .editor .years:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: calc(50% - 3em);\n  right: calc(50% - 3em);\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .hours:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 3em;\n  right: 14em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n.ractive-datepicker .editor .minutes:after {\n  position: absolute;\n  content: '';\n  top: calc(50% - 1em);\n  left: 14em;\n  right: 3em;\n  bottom: calc(50% - 1em);\n  pointer-events: none;\n}\n/*\n        .years:after, .hours:after, .minutes:after\n            border-bottom 2px solid #AAA\n            border-top 2px solid #AAA\n*/\n.monthyear {\n  white-space: initial;\n  font-weight: bold;\n  text-align: center;\n  margin-bottom: 1em;\n}\n.monthyear span {\n  cursor: pointer;\n  display: inline-block;\n  border-bottom: 1px dashed currentColor;\n}\n.nav {\n  white-space: initial;\n  position: relative;\n}\n.nav .next,\n.nav .previous {\n  user-select: none;\n  position: absolute;\n  padding: 0.5em;\n  display: inline-block;\n  cursor: pointer;\n  top: -0.5em;\n}\n.nav .previous {\n  left: 2.5em;\n}\n.nav .previous:before {\n  content: '<';\n}\n.nav .next {\n  right: 2.5em;\n}\n.nav .next:before {\n  content: '>';\n}\n.days {\n  white-space: initial;\n}\n.weekdays {\n  display: flex;\n  opacity: 0.5;\n  font-weight: bold;\n}\n.dates > div,\n.weekdays > div {\n  display: inline-block;\n  width: 3em;\n  height: 3em;\n  line-height: 3em;\n  text-align: center;\n}\n.dates {\n  max-width: 21em;\n  margin-bottom: -0.5em;\n}\n.hours,\n.minutes {\n  width: 50%;\n  height: 23em;\n  display: inline-block;\n}\n.hours {\n  text-align: right;\n  padding-right: 1em;\n}\n.minutes {\n  text-align: left;\n  padding-left: 1em;\n}\n.years,\n.clock {\n  width: 21em;\n  height: 23em;\n}\n.clock:after {\n  position: absolute;\n  content: ':';\n  top: 177px;\n  left: 6px;\n  right: 0;\n  bottom: 0;\n  pointer-events: none;\n  vertical-align: middle;\n  font-weight: bold;\n  text-align: center;\n  font-size: 2em;\n}\n.dates {\n  user-select: none;\n}\n.dates .selected,\n.dates .start {\n  transition: border-radius 0.3s ease;\n}\n.dates > div {\n  user-select: none;\n  -webkit-user-select: none;\n  -ms-user-select: none;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected) {\n  cursor: pointer;\n  border-radius: 50%;\n}\n.dates > div:not(.between):not(.start):not(.end):not(.selected):hover {\n  background: #f0f0f0;\n}\n.dates .off:not(.ghost) {\n  opacity: 0.25;\n}\n.dates .between {\n  background: #d8eff1;\n}\n.dates .between.ghost {\n  background: rgba(216,239,241,0.25);\n}\n.dates > div.selected,\n.dates > div.start,\n.dates > div.end {\n  background: #0097a7;\n  color: #fff;\n  border-radius: 50%;\n}\n.dates > div.selected.ghost,\n.dates > div.start.ghost,\n.dates > div.end.ghost {\n  background: rgba(0,151,167,0.25);\n  color: inherit;\n  cursor: pointer;\n}\n.dates .start {\n  border-radius: 50% 0 0 50% !important;\n}\n.dates .end {\n  border-radius: 0 50% 50% 0 !important;\n}\n.years {\n  text-align: center;\n}\n.years .hide {\n  color: transparent;\n  user-select: none;\n}\n.years,\n.hours,\n.minutes {\n  z-index: 100;\n  white-space: initial;\n  overflow-y: scroll;\n}\n.years::-webkit-scrollbar,\n.hours::-webkit-scrollbar,\n.minutes::-webkit-scrollbar {\n  display: none;\n}\n.years div,\n.hours div,\n.minutes div {\n  font-size: 2em;\n  margin: 1em 0;\n  cursor: pointer;\n}\n.years div.selected,\n.hours div.selected,\n.minutes div.selected {\n  font-weight: bold;\n  margin: 0.5em 0;\n  display: inline-block;\n  cursor: default;\n}\n.header-year {\n  background: #333;\n  color: #aaa;\n  padding-left: 25px;\n  padding-top: 15px;\n  margin-bottom: 0px;\n}\n.show-in-compact {\n  display: none;\n}\n.hide-in-compact {\n  display: initial;\n}\n@media (max-width: 700px) {\n  .ractive-datepicker {\n    flex-direction: column;\n    font-size: 0.8em;\n  }\n  .ractive-datepicker .header {\n    display: flex;\n    flex-direction: row;\n    align-items: flex-end;\n    padding: 1em;\n    padding-top: 15px;\n    font-size: 25px;\n    min-width: 0px;\n  }\n  .ractive-datepicker .header .time {\n    margin: 0;\n    padding: 0;\n    font-size: 20px;\n    position: absolute;\n    right: 1em;\n  }\n  .ractive-datepicker .header .weekday {\n    font-size: 1em;\n  }\n  .ractive-datepicker .header div {\n    display: inline;\n  }\n  .ractive-datepicker .header > div {\n    margin-top: 0 !important;\n    margin-bottom: 0;\n  }\n  .ractive-datepicker .header .active:after {\n    border-right-color: transparent;\n    border-bottom-color: #fff;\n    left: 50%;\n    right: auto;\n    bottom: -1.5em;\n    margin-top: 0;\n    margin-left: -10px;\n  }\n  .ractive-datepicker .editor {\n    flex: 1 1;\n  }\n  .ractive-datepicker .show-in-compact {\n    display: initial;\n  }\n  .ractive-datepicker .hide-in-compact {\n    display: none !important;\n  }\n}\n.ractive-datepicker.compact {\n  flex-direction: column;\n  font-size: 0.8em;\n}\n.ractive-datepicker.compact .header {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-end;\n  padding: 1em;\n  padding-top: 15px;\n  font-size: 25px;\n  min-width: 0px;\n}\n.ractive-datepicker.compact .header .time {\n  margin: 0;\n  padding: 0;\n  font-size: 20px;\n  position: absolute;\n  right: 1em;\n}\n.ractive-datepicker.compact .header .weekday {\n  font-size: 1em;\n}\n.ractive-datepicker.compact .header div {\n  display: inline;\n}\n.ractive-datepicker.compact .header > div {\n  margin-top: 0 !important;\n  margin-bottom: 0;\n}\n.ractive-datepicker.compact .header .active:after {\n  border-right-color: transparent;\n  border-bottom-color: #fff;\n  left: 50%;\n  right: auto;\n  bottom: -1.5em;\n  margin-top: 0;\n  margin-left: -10px;\n}\n.ractive-datepicker.compact .editor {\n  flex: 1 1;\n}\n.ractive-datepicker.compact .show-in-compact {\n  display: initial;\n}\n.ractive-datepicker.compact .hide-in-compact {\n  display: none !important;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-function qinticInOut(t) {
-    if ( ( t *= 2 ) < 1 ) return 0.5 * t * t * t * t * t
-    return 0.5 * ( ( t -= 2 ) * t * t * t * t + 2 )
-}
-
-module.exports = qinticInOut
-
-/***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(1),
-    getRawTag = __webpack_require__(17),
-    objectToString = __webpack_require__(18);
+var Symbol = __webpack_require__(2),
+    getRawTag = __webpack_require__(18),
+    objectToString = __webpack_require__(19);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -1048,7 +1089,7 @@ module.exports = baseGetTag;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -1056,13 +1097,13 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 
 module.exports = freeGlobal;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(1);
+var Symbol = __webpack_require__(2);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -1111,7 +1152,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -1139,7 +1180,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /**
@@ -1174,11 +1215,11 @@ module.exports = isObjectLike;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(15),
-    isObjectLike = __webpack_require__(19);
+var baseGetTag = __webpack_require__(16),
+    isObjectLike = __webpack_require__(20);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -1209,10 +1250,10 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(2);
+var root = __webpack_require__(3);
 
 /**
  * Gets the timestamp of the number of milliseconds that have elapsed since
@@ -1238,11 +1279,11 @@ module.exports = now;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(3),
-    isSymbol = __webpack_require__(20);
+var isObject = __webpack_require__(4),
+    isSymbol = __webpack_require__(21);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -1310,16 +1351,16 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(12);
+var content = __webpack_require__(14);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1336,7 +1377,7 @@ if(false) {
 }
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 var g;
@@ -1363,14 +1404,14 @@ module.exports = g;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 var win = window;
 var doc = document;
 
-__webpack_require__(10);
+__webpack_require__(11);
 
 var localeStringOptions = {
     month: { month: 'long' },
@@ -1378,36 +1419,27 @@ var localeStringOptions = {
     time: { hour: '2-digit', minute: '2-digit' },
 };
 
-var animate = __webpack_require__(11);
+//var animate = require('./util/animate');
 //var moment = require('moment');
 
-var debounce = __webpack_require__(5);
-var isNil = __webpack_require__(6);
-
-
-
-var lastScroll = new Date()
-var wheel = function () {
-    lastScroll = new Date();
-};
-if (window.addEventListener) {
-    window.addEventListener('DOMMouseScroll', wheel, false);
-}
-window.onmousewheel = document.onmousewheel = wheel;
+var debounce = __webpack_require__(6);
+var isNil = __webpack_require__(7);
+var scroll = __webpack_require__(0);
+var animate = __webpack_require__(13);
 
 module.exports = Ractive.extend({
 
-    template: __webpack_require__(8),
+    template: __webpack_require__(9),
 
     isolated: true,
 
     decorators: {
-        //preventOverscroll: require('./decorators/prevent-overscroll.js'),
-        tooltip: __webpack_require__(9),
+        preventOverscroll: __webpack_require__(12),
+        tooltip: __webpack_require__(10),
     },
 
     events: {
-        hover: __webpack_require__(7)
+        hover: __webpack_require__(8)
     },
 
     data: function () {
@@ -1424,8 +1456,8 @@ module.exports = Ractive.extend({
             // "date" or "datetime". Useful if you don't want to select a specific hour/minute.
             mode: 'datetime',
             'weekday-format': 'ddd',
-            'min-year': 1990,
-            'max-year': 2030,
+            'min-year': 2015,
+            'max-year': 2020,
             // currently viewed year/month
             current: {
                 year: 0,
@@ -1569,16 +1601,16 @@ module.exports = Ractive.extend({
         var minYear = self.get('min-year');
         var maxYear = self.get('max-year');
         var diff = maxYear - minYear;
-        var years = Array.apply(0, Array((diff + 1) * 3)).map(function (a, i) { return (minYear + i % diff) });
+        var years = Array.apply(0, Array(diff + 1)).map(function (a, i) { return minYear + i });
         self.set('years', years);
     },
 
     oninit: function () {
         window.onresize = function (event) {
             console.warn("resize...");
-            setPosition('.hours');
-            setPosition('.minutes');
-            setPosition('.years');
+            setPosition('.hours', 1);
+            setPosition('.minutes', 1);
+            setPosition('.years', 0);
         }
 
         var self = this;
@@ -1666,15 +1698,23 @@ module.exports = Ractive.extend({
         });
 
         self.on('setYear', function (details) {
+            console.info("set year", details.context);
             var date = self.get('date');
-            if (details.context)
+            if (Number(details.context) < 0) {
+                return;
+            }
+            else if (details.context) {
                 date.setFullYear(details.context);
+            }
             self.set('date', date);
             self.set('current.year', details.context);
-            setPosition('.years');
+            setPosition('.years', 0, false);
         });
 
         self.on('fixYear', function (details) {
+            if (Number(details.context) < 0) {
+                return;
+            }
             self.fire('setYear', details);
             self.set('editing', 'date');
         });
@@ -1685,7 +1725,7 @@ module.exports = Ractive.extend({
             date.setHours(details.context);
             self.set('date', date);
             self.set('editing', 'time');
-            setPosition('.hours');
+            setPosition('.hours', 1);
         });
 
         self.on('setMinutes', function (details) {
@@ -1694,18 +1734,18 @@ module.exports = Ractive.extend({
             date.setMinutes(details.context);
             self.set('date', date);
             self.set('editing', 'time');
-            setPosition('.minutes');
+            setPosition('.minutes', 1);
         });
 
         self.observe('editing', function (editing) {
             setTimeout(function () {
                 console.warn("editing:", editing);
                 if (editing.indexOf('year') > -1) {
-                    setPosition('.years');
+                    setPosition('.years', 0);
                 }
                 if (editing.indexOf('time') > -1) {
-                    setPosition('.hours');
-                    setPosition('.minutes');
+                    setPosition('.hours', 1);
+                    setPosition('.minutes', 1);
                 }
             });
         }, { init: false, defer: true });
@@ -1728,59 +1768,25 @@ module.exports = Ractive.extend({
             self.set('ghostEnd', null);
         });
 
-        function setPosition(selector) {
+        function setPosition(selector, index, hard) {
             var element = self.find(selector);
             if (!element)
                 return;
             var actives = self.findAll(selector + ' .active');
             if (!actives)
                 return
-            var active = actives[1];
+            var active = actives[index];
             if (!active)
                 return;
-
-            fixOverscroll(selector);
-            var styles = window.getComputedStyle(self.find('.editor'));
-            var offset = parseInt(styles.paddingTop, 10);
-            var target = active.offsetTop - element.offsetHeight / 2 + active.clientHeight / 2 - offset;
-            var len = actives[1].offsetTop - actives[0].offsetTop;
-            target = (target % len) + len;
-            smooth(100, element, target);
+            var children = self.findAll(selector + " > div");
+            animate.smooth(100, element, scroll.scrollToCenter(element, active), selector);
         }
 
-        function smooth(scrollDuration, element, target) {
-            var steps = 0;
-            var maxSteps = (scrollDuration / 15);
-            var scrollMargin = 0;
-            var scrollStep = Math.PI / maxSteps;
-            var cosParameter = (target - element.scrollTop) / 2;
-            var pos = element.scrollTop;
-
-            var scrollInterval = setInterval(function () {
-                steps++;
-                if (steps >= maxSteps || Math.abs(element.scrollTop - target) < 0.5) {
-                    clearInterval(scrollInterval);
-                    element.scrollTop = target;
-                    return;
-                }
-                else {
-                    scrollMargin = cosParameter - cosParameter * Math.cos(steps * scrollStep);
-                    element.scrollTop = pos + scrollMargin;
-                }
-            }, 15);
-        }
-
-        function snap(node, method, value) {
+        function snap(node, method) {
             if (!node)
                 return;
-
-            var div = node.querySelector('div');
-            if (!div)
-                return;
-
-            var divHeight = div.offsetHeight + parseFloat(window.getComputedStyle(div).marginBottom);
-            var index = Math.round(node.scrollTop / divHeight + node.offsetHeight / divHeight / 2 - .5);
-            self.fire(method, { context: Number(node.children[index].textContent) });
+            var to = scroll.divAtCenter(node, node.querySelectorAll('div'));
+            self.fire(method, { context: Number(to.textContent) });
         }
 
         var debouncedSnap = debounce(snap, 250);
@@ -1788,6 +1794,9 @@ module.exports = Ractive.extend({
         function fixOverscroll(selector) {
             var element = self.find(selector);
             var actives = self.findAll(selector + ' .active');
+            if (!actives || !actives[1])
+                return;
+            console.info("fixOverscroll");
             var len = actives[1].offsetTop - actives[0].offsetTop;
             if (element.scrollTop >= (len) * 2) {
                 element.scrollTop -= len;
@@ -1797,12 +1806,16 @@ module.exports = Ractive.extend({
             }
         }
 
+        var last = undefined;
         self.on('wheel', function (details, method) {
-            var event = details.original;
-            if (method == 'setYear') fixOverscroll('.years');
-            if (method == 'setHours') fixOverscroll('.hours');
-            if (method == 'setMinutes') fixOverscroll('.minutes');
-            debouncedSnap(details.node, method);
+            if (!details || !details.node)
+                return;
+            if (last != details.node.scrollTop) {
+                last = details.node.scrollTop;
+                if (method == 'setHours') fixOverscroll('.hours');
+                if (method == 'setMinutes') fixOverscroll('.minutes');
+                debouncedSnap(details.node, method);
+            }
         });
     },
 

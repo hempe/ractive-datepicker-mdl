@@ -10,22 +10,13 @@ var localeStringOptions = {
     time: { hour: '2-digit', minute: '2-digit' },
 };
 
-var animate = require('./util/animate');
+//var animate = require('./util/animate');
 //var moment = require('moment');
 
 var debounce = require('lodash/debounce');
 var isNil = require('lodash/isNil');
-
-
-
-var lastScroll = new Date()
-var wheel = function () {
-    lastScroll = new Date();
-};
-if (window.addEventListener) {
-    window.addEventListener('DOMMouseScroll', wheel, false);
-}
-window.onmousewheel = document.onmousewheel = wheel;
+var scroll = require('./util/scroll-helper');
+var animate = require('./util/animate');
 
 module.exports = Ractive.extend({
 
@@ -34,7 +25,7 @@ module.exports = Ractive.extend({
     isolated: true,
 
     decorators: {
-        //preventOverscroll: require('./decorators/prevent-overscroll.js'),
+        preventOverscroll: require('./decorators/prevent-overscroll.js'),
         tooltip: require('ractive-tooltip'),
     },
 
@@ -56,8 +47,8 @@ module.exports = Ractive.extend({
             // "date" or "datetime". Useful if you don't want to select a specific hour/minute.
             mode: 'datetime',
             'weekday-format': 'ddd',
-            'min-year': 1990,
-            'max-year': 2030,
+            'min-year': 2015,
+            'max-year': 2020,
             // currently viewed year/month
             current: {
                 year: 0,
@@ -201,16 +192,16 @@ module.exports = Ractive.extend({
         var minYear = self.get('min-year');
         var maxYear = self.get('max-year');
         var diff = maxYear - minYear;
-        var years = Array.apply(0, Array((diff + 1) * 3)).map(function (a, i) { return (minYear + i % diff) });
+        var years = Array.apply(0, Array(diff + 1)).map(function (a, i) { return minYear + i });
         self.set('years', years);
     },
 
     oninit: function () {
         window.onresize = function (event) {
             console.warn("resize...");
-            setPosition('.hours');
-            setPosition('.minutes');
-            setPosition('.years');
+            setPosition('.hours', 1);
+            setPosition('.minutes', 1);
+            setPosition('.years', 0);
         }
 
         var self = this;
@@ -298,15 +289,23 @@ module.exports = Ractive.extend({
         });
 
         self.on('setYear', function (details) {
+            console.info("set year", details.context);
             var date = self.get('date');
-            if (details.context)
+            if (Number(details.context) < 0) {
+                return;
+            }
+            else if (details.context) {
                 date.setFullYear(details.context);
+            }
             self.set('date', date);
             self.set('current.year', details.context);
-            setPosition('.years');
+            setPosition('.years', 0, false);
         });
 
         self.on('fixYear', function (details) {
+            if (Number(details.context) < 0) {
+                return;
+            }
             self.fire('setYear', details);
             self.set('editing', 'date');
         });
@@ -317,7 +316,7 @@ module.exports = Ractive.extend({
             date.setHours(details.context);
             self.set('date', date);
             self.set('editing', 'time');
-            setPosition('.hours');
+            setPosition('.hours', 1);
         });
 
         self.on('setMinutes', function (details) {
@@ -326,18 +325,18 @@ module.exports = Ractive.extend({
             date.setMinutes(details.context);
             self.set('date', date);
             self.set('editing', 'time');
-            setPosition('.minutes');
+            setPosition('.minutes', 1);
         });
 
         self.observe('editing', function (editing) {
             setTimeout(function () {
                 console.warn("editing:", editing);
                 if (editing.indexOf('year') > -1) {
-                    setPosition('.years');
+                    setPosition('.years', 0);
                 }
                 if (editing.indexOf('time') > -1) {
-                    setPosition('.hours');
-                    setPosition('.minutes');
+                    setPosition('.hours', 1);
+                    setPosition('.minutes', 1);
                 }
             });
         }, { init: false, defer: true });
@@ -360,59 +359,25 @@ module.exports = Ractive.extend({
             self.set('ghostEnd', null);
         });
 
-        function setPosition(selector) {
+        function setPosition(selector, index, hard) {
             var element = self.find(selector);
             if (!element)
                 return;
             var actives = self.findAll(selector + ' .active');
             if (!actives)
                 return
-            var active = actives[1];
+            var active = actives[index];
             if (!active)
                 return;
-
-            fixOverscroll(selector);
-            var styles = window.getComputedStyle(self.find('.editor'));
-            var offset = parseInt(styles.paddingTop, 10);
-            var target = active.offsetTop - element.offsetHeight / 2 + active.clientHeight / 2 - offset;
-            var len = actives[1].offsetTop - actives[0].offsetTop;
-            target = (target % len) + len;
-            smooth(100, element, target);
+            var children = self.findAll(selector + " > div");
+            animate.smooth(100, element, scroll.scrollToCenter(element, active), selector);
         }
 
-        function smooth(scrollDuration, element, target) {
-            var steps = 0;
-            var maxSteps = (scrollDuration / 15);
-            var scrollMargin = 0;
-            var scrollStep = Math.PI / maxSteps;
-            var cosParameter = (target - element.scrollTop) / 2;
-            var pos = element.scrollTop;
-
-            var scrollInterval = setInterval(function () {
-                steps++;
-                if (steps >= maxSteps || Math.abs(element.scrollTop - target) < 0.5) {
-                    clearInterval(scrollInterval);
-                    element.scrollTop = target;
-                    return;
-                }
-                else {
-                    scrollMargin = cosParameter - cosParameter * Math.cos(steps * scrollStep);
-                    element.scrollTop = pos + scrollMargin;
-                }
-            }, 15);
-        }
-
-        function snap(node, method, value) {
+        function snap(node, method) {
             if (!node)
                 return;
-
-            var div = node.querySelector('div');
-            if (!div)
-                return;
-
-            var divHeight = div.offsetHeight + parseFloat(window.getComputedStyle(div).marginBottom);
-            var index = Math.round(node.scrollTop / divHeight + node.offsetHeight / divHeight / 2 - .5);
-            self.fire(method, { context: Number(node.children[index].textContent) });
+            var to = scroll.divAtCenter(node, node.querySelectorAll('div'));
+            self.fire(method, { context: Number(to.textContent) });
         }
 
         var debouncedSnap = debounce(snap, 250);
@@ -420,6 +385,9 @@ module.exports = Ractive.extend({
         function fixOverscroll(selector) {
             var element = self.find(selector);
             var actives = self.findAll(selector + ' .active');
+            if (!actives || !actives[1])
+                return;
+            console.info("fixOverscroll");
             var len = actives[1].offsetTop - actives[0].offsetTop;
             if (element.scrollTop >= (len) * 2) {
                 element.scrollTop -= len;
@@ -429,12 +397,16 @@ module.exports = Ractive.extend({
             }
         }
 
+        var last = undefined;
         self.on('wheel', function (details, method) {
-            var event = details.original;
-            if (method == 'setYear') fixOverscroll('.years');
-            if (method == 'setHours') fixOverscroll('.hours');
-            if (method == 'setMinutes') fixOverscroll('.minutes');
-            debouncedSnap(details.node, method);
+            if (!details || !details.node)
+                return;
+            if (last != details.node.scrollTop) {
+                last = details.node.scrollTop;
+                if (method == 'setHours') fixOverscroll('.hours');
+                if (method == 'setMinutes') fixOverscroll('.minutes');
+                debouncedSnap(details.node, method);
+            }
         });
     },
 

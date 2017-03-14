@@ -1,31 +1,38 @@
-/*
+
 var win = window;
 var doc = document;
-
-module.exports = function(node, instance) {
+var scroll = require('../util/scroll-helper.js');
+module.exports = function (node, instance) {
 
     node.addEventListener('mouseenter', disableScroll);
     node.addEventListener('mouseleave', enableScroll);
 
-    var contentHeight;
+    function prevent(e) {
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+        return false;
+    }
 
     function preventDefault(e) {
-
         e = e || win.event;
-        if( (node.scrollTop <= 1 && e.deltaY < 0) ||
-           (node.scrollTop >= contentHeight && e.deltaY > 0) ) {
-
-            if (e.preventDefault)
-                e.preventDefault();
-            e.returnValue = false;
-            return false;
+        var scrollto = node.scrollTop + e.deltaY;
+        if (!node.querySelectorAll('div'))
+            return;
+        var all = node.querySelectorAll('div');
+        var min = scroll.scrollToCenter(node, all[1]);
+        if (scrollto <= min) {
+            node.scrollTop = min;
+            return prevent(e);
+        }
+        var max = scroll.scrollToCenter(node, all[all.length - 2]);
+        if (scrollto >= max) {
+            node.scrollTop = max;
+            return prevent(e);
         }
     }
 
     function disableScroll() {
-        // cache height for perf and avoiding reflow/repaint
-        contentHeight = node.scrollHeight - node.offsetHeight - 1;
-
         win.addEventListener('DOMMouseScroll', preventDefault, false);
         win.addEventListener('wheel', preventDefault); // modern standard
         win.addEventListener('mousewheel', preventDefault); // older browsers, IE
@@ -34,9 +41,7 @@ module.exports = function(node, instance) {
     }
 
     function enableScroll() {
-
         win.removeEventListener('DOMMouseScroll', preventDefault, false);
-
         win.removeEventListener('wheel', preventDefault); // modern standard
         win.removeEventListener('mousewheel', preventDefault); // older browsers, IE
         doc.removeEventListener('mousewheel', preventDefault);
@@ -44,12 +49,11 @@ module.exports = function(node, instance) {
     }
 
     return {
-        teardown: function() {
+        teardown: function () {
+            console.warn("teardown....");
+            enableScroll();
             node.removeEventListener('mouseenter', disableScroll);
             node.removeEventListener('mouseleave', enableScroll);
         }
     }
-
-
 }
-*/

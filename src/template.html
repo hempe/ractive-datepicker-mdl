@@ -67,12 +67,16 @@
 
     <div class='editor'>
         {{#if editing.indexOf('year') > -1}}
-        <div class='years' on-wheel-touchmove='wheel:setYear'>
-            {{#with @this.get(editing.replace("year", "") || "date") as editing}} {{#years:i}}
+        <div class='years' on-wheel-touchmove='wheel:setYear' decorator='preventOverscroll'>
+            <div class="overscroll-spacer"></div>
+            {{#with @this.get(editing.replace("year", "") || "date") as editing}} {{#years:i}} {{#if this == '-1'}}
+            <div class="hide">{{this}}</div>
+            {{else}}
             <div class="{{ year(editing)==this ? 'active' : '' }}" on-click='fixYear'>
                 {{this}}
             </div>
-            {{/}} {{/with}}
+            {{/if}} {{/}} {{/with}}
+            <div class="overscroll-spacer"></div>
         </div>
         {{elseif editing == 'date'}}
 

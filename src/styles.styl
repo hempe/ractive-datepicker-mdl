@@ -59,6 +59,9 @@
         padding 2em
         position relative
         user-select none
+        .overscroll-spacer
+            height 200px
+        
         .years:before, .hours:before
             position absolute
             content ''
@@ -168,16 +171,15 @@
     .clock:after
         position absolute
         content ':'
-        top 0
-        left 0
+        top 177px
+        left 6px
         right 0
         bottom 0
         pointer-events none
         vertical-align middle
         font-weight bold
         text-align center
-        line-height 27em
-        font-size 1em
+        font-size 2em
 
     .dates
         user-select none
@@ -228,6 +230,9 @@
 
     .years
         text-align center
+        .hide
+            color transparent
+            user-select none
 
     .years, .hours, .minutes
         z-index 100
@@ -236,7 +241,7 @@
         &::-webkit-scrollbar
             display none
         div
-            font-size 1.4em
+            font-size 2em
             margin 1em 0
             cursor pointer
             &.selected
