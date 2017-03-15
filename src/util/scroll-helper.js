@@ -8,8 +8,11 @@ module.exports = (function () {
         },
         divAtCenter: function (div, children) {
             for (var i = 0; i < children.length; i++) {
-                if (_scrollToCenter(div, children[i]) >= div.scrollTop)
+                var pos = _scrollToCenter(div, children[i]);
+                var top = parseFloat(window.getComputedStyle(children[i]).marginTop);
+                if (pos + top >= div.scrollTop) {
                     return children[i];
+                }
             }
             return children[children.length - 1];
         }

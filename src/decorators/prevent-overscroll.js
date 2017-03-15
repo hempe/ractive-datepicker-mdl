@@ -22,11 +22,13 @@ module.exports = function (node, instance) {
         var all = node.querySelectorAll('div');
         var min = scroll.scrollToCenter(node, all[1]);
         if (scrollto <= min) {
+            console.info("min %o", min);
             node.scrollTop = min;
             return prevent(e);
         }
         var max = scroll.scrollToCenter(node, all[all.length - 2]);
         if (scrollto >= max) {
+            console.info("max %o", max);
             node.scrollTop = max;
             return prevent(e);
         }
