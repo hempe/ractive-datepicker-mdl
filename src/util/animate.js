@@ -9,6 +9,8 @@ module.exports = (function () {
 
     var _smoothActive = [];
     function _smooth(scrollDuration, element, target, selector) {
+        element.scrollTop = target
+        return;
         _stopSmooth(selector);
         var steps = 0;
         var maxSteps = (scrollDuration / 15);

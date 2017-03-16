@@ -127,11 +127,13 @@
         {{/}} {{/with}}
     </div>
     <div class='minutes' on-wheel-touchmove='wheel:setMinutes'>
+        <div class="overscroll-spacer"></div>
         {{#with @this.get(editing.replace("time", "") || "date") as editing}} {{#minutes}}
         <div class="{{ minute(editing)==this ? 'active' : '' }}" on-click='setMinutes'>
             {{ this }}
         </div>
         {{/}} {{/with}}
+        <div class="overscroll-spacer"></div>
     </div>
 </div>
 {{/if}}

@@ -4,12 +4,6 @@ var doc = document;
 
 require('./styles.styl');
 
-var localeStringOptions = {
-    month: { month: 'long' },
-    weekday: { weekday: 'short' },
-    time: { hour: '2-digit', minute: '2-digit' },
-};
-
 //var animate = require('./util/animate');
 //var moment = require('moment');
 
@@ -17,6 +11,7 @@ var debounce = require('lodash/debounce');
 var isNil = require('lodash/isNil');
 var scroll = require('./util/scroll-helper');
 var animate = require('./util/animate');
+var dateHelper = require('./util/date-helper');
 
 module.exports = Ractive.extend({
 
@@ -58,7 +53,8 @@ module.exports = Ractive.extend({
             editing: 'date',
             years: [],
             hours: Array.apply(0, Array(23 * 3)).map(function (a, i) { return (i % 24) }),
-            minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) < 10 ? '0' + (i % 60) : i % 60 }),
+            minutes: [],
+            //minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) < 10 ? '0' + (i % 60) : i % 60 }),
 
             lastSet: 'end',
 
@@ -67,7 +63,7 @@ module.exports = Ractive.extend({
             * @default 1
             * @type integer
             */
-            minuteIncrement: 1,
+            'minutes-increment': 15,
 
             moment: moment,
 
@@ -158,6 +154,19 @@ module.exports = Ractive.extend({
 
         var self = this;
 
+        var minuteIncrement = self.get('minutes-increment');
+        var minutes = Array.apply(0, Array(Math.ceil(59 * 3 / minuteIncrement)))
+            .map(function (a, i) { return (i * minuteIncrement % 60) < 10 ? '0' + (i * minuteIncrement % 60) : i * minuteIncrement % 60 });
+        self.set('minutes', minutes);
+
+        var minYear = self.get('min-year');
+        var maxYear = self.get('max-year');
+        var diff = maxYear - minYear;
+
+        var years = Array.apply(0, Array(diff + 1))
+            .map(function (a, i) { return minYear + i });
+        self.set('years', years);
+
         var date = self.get('date');
         var range = self.get('range');
 
@@ -169,6 +178,7 @@ module.exports = Ractive.extend({
             if (!range)
                 self.set('date', date);
         }
+
 
         function isAfter(start, end) {
             return start.getTime() < end.getTime();
@@ -185,15 +195,23 @@ module.exports = Ractive.extend({
             }
         }
 
+        if (date) {
+            date = dateHelper.setMinutes(date, self.get('minutes-increment'));
+            self.set('data', date);
+        }
+        if (start) {
+            start = dateHelper.setMinutes(start, self.get('minutes-increment'));
+            self.set('start', start);
+        }
+        if (end) {
+            end = dateHelper.setMinutes(end, self.get('minutes-increment'));
+            self.set('end', end);
+        }
+
         // update current
         self.set('current.month', date.getMonth());
         self.set('current.year', date.getFullYear());
 
-        var minYear = self.get('min-year');
-        var maxYear = self.get('max-year');
-        var diff = maxYear - minYear;
-        var years = Array.apply(0, Array(diff + 1)).map(function (a, i) { return minYear + i });
-        self.set('years', years);
     },
 
     oninit: function () {
@@ -247,8 +265,7 @@ module.exports = Ractive.extend({
                 date = clicked;
 
                 date.setHours(hours);
-                date.setMinutes(minutes);
-
+                date = dateHelper.setMinutes(date, self.get('minutes-increment'), minutes);
 
                 if (lastSet == 'end' || moment(clicked).isBefore(start)) {
 
@@ -277,7 +294,7 @@ module.exports = Ractive.extend({
                 date = clicked;
 
                 date.setHours(hours);
-                date.setMinutes(minutes);
+                date = dateHelper.setMinutes(date, self.get('minutes-increment'), minutes);
 
                 self.set('current.year', clicked.getFullYear());
                 self.set('current.month', clicked.getMonth());
@@ -320,9 +337,10 @@ module.exports = Ractive.extend({
         });
 
         self.on('setMinutes', function (details) {
-            details.context = details.context % 60;
+            console.info("Set minutes to %o", details.context);
             var date = self.get('date');
-            date.setMinutes(details.context);
+            date = dateHelper.setMinutes(date, self.get('minutes-increment'), details.context);
+
             self.set('date', date);
             self.set('editing', 'time');
             setPosition('.minutes', 1);
@@ -369,7 +387,7 @@ module.exports = Ractive.extend({
             var active = actives[index];
             if (!active)
                 return;
-            var children = self.findAll(selector + " > div");
+
             animate.smooth(100, element, scroll.scrollToCenter(element, active), selector);
         }
 
@@ -387,14 +405,9 @@ module.exports = Ractive.extend({
             var actives = self.findAll(selector + ' .active');
             if (!actives || !actives[1])
                 return;
-            console.info("fixOverscroll");
+
             var len = actives[1].offsetTop - actives[0].offsetTop;
-            if (element.scrollTop >= (len) * 2) {
-                element.scrollTop -= len;
-            }
-            else if (element.scrollTop <= len) {
-                element.scrollTop += len;
-            }
+            element.scrollTop = element.scrollTop % len + len;
         }
 
         var last = undefined;
