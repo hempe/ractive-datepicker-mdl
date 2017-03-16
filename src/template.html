@@ -1,4 +1,5 @@
-<div class='ractive-datepicker {{class}}' style='{{style}}'>
+<div class='ractive-datepicker {{class}}'>
+    <!--style='{{style}}'>-->
 
 
     {{#unless showHeader===false}}
@@ -118,13 +119,15 @@
         {{/}} {{/if}}
     </div>
 </div>{{elseif editing.indexOf('time') > -1}}
-<div class="clock">
+<div class="clock {{ 'format-'+@this.get('hour-format')+'h' }}">
     <div class='hours' on-wheel-touchmove='wheel:setHours'>
+        <div class="overscroll-spacer"></div>
         {{#with @this.get(editing.replace("time", "") || "date") as editing}} {{#hours}}
         <div class="{{ hour(editing)==this ? 'active' : '' }}" on-click='setHours'>
             {{this}}
         </div>
         {{/}} {{/with}}
+        <div class="overscroll-spacer"></div>
     </div>
     <div class='minutes' on-wheel-touchmove='wheel:setMinutes'>
         <div class="overscroll-spacer"></div>
@@ -134,6 +137,16 @@
         </div>
         {{/}} {{/with}}
         <div class="overscroll-spacer"></div>
+    </div>
+    <div class="meridiem">
+        <table>
+            <tr>
+                {{#with @this.get(editing.replace("time", "") || "date") as editing}}
+                <td class="am {{ meridiem(editing) == 'am' ? 'active' : '' }}" on-click='setMeridiem:am'>AM</td>
+                <td class="pm {{ meridiem(editing) == 'pm' ? 'active' : '' }}" on-click='setMeridiem:pm'>PM</td>
+                {{/with}}
+            </tr>
+        </table>
     </div>
 </div>
 {{/if}}

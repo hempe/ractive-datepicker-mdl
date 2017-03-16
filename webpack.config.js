@@ -9,7 +9,7 @@ module.exports = {
         modules: true,
         reasons: true
     },
-    progress: true,
+    progress: false,
     output: {
         path: __dirname + '/',
         filename: 'ractive-datepicker.js',

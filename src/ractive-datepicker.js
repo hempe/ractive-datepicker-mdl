@@ -50,9 +50,9 @@ module.exports = Ractive.extend({
                 month: 0,
             },
 
-            editing: 'date',
+            editing: 'time',
             years: [],
-            hours: Array.apply(0, Array(23 * 3)).map(function (a, i) { return (i % 24) }),
+            hours: [],
             minutes: [],
             //minutes: Array.apply(0, Array(59 * 3)).map(function (a, i) { return (i % 60) < 10 ? '0' + (i % 60) : i % 60 }),
 
@@ -65,6 +65,12 @@ module.exports = Ractive.extend({
             */
             'minutes-increment': 15,
 
+            /**
+             * The time format 12 or 24
+             * @default 24
+             * @type integer
+             */
+            'hour-format': 24,
             moment: moment,
 
             // helpers
@@ -78,15 +84,26 @@ module.exports = Ractive.extend({
             },
 
             hour: function (d) {
-                return d.getHours();
+                var hourFormat = _this['hour-format'];
+                if (hourFormat == 12)
+                    return moment(d).format("hh");
+                return moment(d).format("H");
             },
-
+            meridiem: function (d) {
+                if (d.getHours)
+                    d = d.getHours();
+                console.info("called")
+                return d < 12 ? 'am' : 'pm';
+            },
             minute: function (d) {
                 return d.getMinutes();
             },
 
             time: function (d) {
-                return moment(d).format('LT')
+                var hourFormat = _this['hour-format'];
+                if (hourFormat == 12)
+                    return moment(d).format('hh:mm A');
+                return moment(d).format("HH:mm");
             },
 
             weekdayShort: function (d) {
@@ -154,6 +171,17 @@ module.exports = Ractive.extend({
 
         var self = this;
 
+        var hourFormat = self.get('hour-format');
+        var hours = [];
+        if (hourFormat == 12) {
+            console.info("hour format 12");
+            hours = Array.apply(0, Array(11 * 3)).map(function (a, i) { return (i % 12) + 1 });
+        } else {
+            console.info("hour format 24");
+            hours = Array.apply(0, Array(23 * 3)).map(function (a, i) { return (i % 24) });
+        }
+        self.set('hours', hours);
+
         var minuteIncrement = self.get('minutes-increment');
         var minutes = Array.apply(0, Array(Math.ceil(59 * 3 / minuteIncrement)))
             .map(function (a, i) { return (i * minuteIncrement % 60) < 10 ? '0' + (i * minuteIncrement % 60) : i * minuteIncrement % 60 });
@@ -211,7 +239,10 @@ module.exports = Ractive.extend({
         // update current
         self.set('current.month', date.getMonth());
         self.set('current.year', date.getFullYear());
-
+        self.set('editing', '');
+        setTimeout(function () {
+            self.set('editing', 'time');
+        }, 100);
     },
 
     oninit: function () {
@@ -264,7 +295,7 @@ module.exports = Ractive.extend({
 
                 date = clicked;
 
-                date.setHours(hours);
+                date = dateHelper.setHours(date, self.get('hour-format'), hours);
                 date = dateHelper.setMinutes(date, self.get('minutes-increment'), minutes);
 
                 if (lastSet == 'end' || moment(clicked).isBefore(start)) {
@@ -293,7 +324,7 @@ module.exports = Ractive.extend({
 
                 date = clicked;
 
-                date.setHours(hours);
+                date = dateHelper.setHours(date, self.get('hour-format'), hours);
                 date = dateHelper.setMinutes(date, self.get('minutes-increment'), minutes);
 
                 self.set('current.year', clicked.getFullYear());
@@ -316,7 +347,7 @@ module.exports = Ractive.extend({
             }
             self.set('date', date);
             self.set('current.year', details.context);
-            setPosition('.years', 0, false);
+            setPosition('.years', 0);
         });
 
         self.on('fixYear', function (details) {
@@ -328,22 +359,30 @@ module.exports = Ractive.extend({
         });
 
         self.on('setHours', function (details) {
-            details.context = details.context % 24;
-            var date = self.get('date');
-            date.setHours(details.context);
+            var date = dateHelper.setHours(self.get('date'), self.get('hour-format'), details.context);
             self.set('date', date);
-            self.set('editing', 'time');
             setPosition('.hours', 1);
         });
 
         self.on('setMinutes', function (details) {
-            console.info("Set minutes to %o", details.context);
-            var date = self.get('date');
-            date = dateHelper.setMinutes(date, self.get('minutes-increment'), details.context);
-
+            var date = dateHelper.setMinutes(self.get('date'), self.get('minutes-increment'), details.context);
             self.set('date', date);
-            self.set('editing', 'time');
             setPosition('.minutes', 1);
+        });
+
+        self.on('setMeridiem', function (details, meridiem) {
+            console.warn("set meridiem", details, meridiem);
+
+            var date = self.get('date');
+            console.info("before %o", date.getHours());
+            var hours = date.getHours();
+            if (hours <= 12 && meridiem == 'pm')
+                date.setHours(hours + 12);
+            else if (hours >= 12 && meridiem == 'am')
+                date.setHours(hours - 12);
+
+            console.info("after %o", date.getHours());
+            self.set('date', date);
         });
 
         self.observe('editing', function (editing) {
