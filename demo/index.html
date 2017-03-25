@@ -45,7 +45,7 @@
             <p>In your template:</p>
             <pre>
             <code>
-    &lt;datepicker min-year="2000" max-year="2050" hour-format="24" minutes-increment="5" date="\{{date}}"&gt;&lt;/datepicker&gt;
+    &lt;datepicker min-year="\{{minYear}}" max-year="\{{maxYear}}" hour-format="24" minutes-increment="5" date="\{{date}}"&gt;&lt;/datepicker&gt;
             </code>
         </pre>
 
@@ -55,20 +55,29 @@
                 Result:
 
                 <div style='margin: 1em 0'>
-                    <datepicker min-year="2000" max-year="2050" hour-format="24" minutes-increment="5" mode='{{mode}}' date='{{date}}'></datepicker>
+                    <datepicker min-year="{{minYear}}" max-year="{{maxYear}}" hour-format="24" minutes-increment="5" mode='{{mode}}' date='{{date}}'></datepicker>
                 </div>
 
                 Mode:
 
                 <label>
                 <input name='{{mode}}' type='radio' value='date'>
-                "date"
-            </label>
+                    "date"
+                </label>
 
                 <label>
                 <input name='{{mode}}' type='radio' value='datetime'>
-                "datetime"
-            </label>
+                    "datetime"
+                </label>
+                <label>
+                <input type='number' value='{{minYear}}'>
+                    "min-year"
+                </label>
+                <label>
+                <input type='number' value='{{maxYear}}'>
+                    "max-year"
+                </label>
+
 
                 <div style='margin-top: 1em'>
                     Selected date: {{date.toLocaleString()}}
@@ -148,7 +157,10 @@
             data: {
                 mode: 'datetime',
                 start: new Date(),
+                end: null,
                 moment: moment,
+                minYear: 2000,
+                maxYear: 2050
             },
 
             components: {

@@ -187,19 +187,8 @@ module.exports = Ractive.extend({
             .map(function (a, i) { return (i * minuteIncrement % 60) < 10 ? '0' + (i * minuteIncrement % 60) : i * minuteIncrement % 60 });
         self.set('minutes', minutes);
 
-        var minYear = self.get('min-year');
-        var maxYear = self.get('max-year');
-        var diff = maxYear - minYear;
-
-        var years = Array.apply(0, Array(diff + 1))
-            .map(function (a, i) { return minYear + i });
-        self.set('years', years);
-
         var date = self.get('date');
         var range = self.get('range');
-
-        var start = self.get('start');
-        var end = self.get('end');
 
         if (!date) {
             date = new Date();
@@ -212,12 +201,14 @@ module.exports = Ractive.extend({
             return start.getTime() < end.getTime();
         }
 
+        var start = self.get('start');
+        var end = self.get('end');
         if (range) {
             if (!start) {
                 start = date;
                 self.set('start', start);
             }
-            if (end === undefined || (end && !moment(start).isAfter(end))) {
+            if (!end || (end && !moment(start).isAfter(end))) {
                 end = new Date(start.getTime() + 3 * 24 * 60 * 60 * 1000); // default to 3 days after
                 self.set('end', end);
             }
@@ -241,7 +232,7 @@ module.exports = Ractive.extend({
         self.set('current.year', date.getFullYear());
         self.set('editing', '');
         setTimeout(function () {
-            self.set('editing', 'time');
+            self.set('editing', 'date');
         }, 100);
     },
 
@@ -385,6 +376,16 @@ module.exports = Ractive.extend({
             self.set('date', date);
         });
 
+        self.observe('min-year', function (minYear) {
+            console.debug("min-year changed %o", minYear);
+            setYears(minYear, self.get('max-year'));
+        }, { init: true, defer: true });
+
+        self.observe('max-year', function (maxYear) {
+            console.debug("max-year changed %o", maxYear);
+            setYears(self.get('min-year'), maxYear);
+        }, { init: true, defer: true });
+
         self.observe('editing', function (editing) {
             setTimeout(function () {
                 console.warn("editing:", editing);
@@ -415,6 +416,12 @@ module.exports = Ractive.extend({
         self.observe('start end', function () {
             self.set('ghostEnd', null);
         });
+
+        function setYears(minYear, maxYear) {
+            var diff = maxYear - minYear;
+            var years = Array.apply(0, Array(diff + 1)).map(function (a, i) { return minYear + i });
+            self.set('years', years);
+        }
 
         function setPosition(selector, index, hard) {
             var element = self.find(selector);
